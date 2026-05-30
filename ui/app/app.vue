@@ -1,10 +1,5 @@
 <template>
   <div>
-    <NuxtRouteAnnouncer />
-    <WelcomePage />
+    <NuxtPage />
   </div>
 </template>
-
-<script setup lang="ts">
-import WelcomePage from './welcomePage/index.vue'
-</script>
