@@ -265,26 +265,13 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container footer__inner">
-        <div class="footer__brand">
-          <div class="brand__mark brand__mark--sm" aria-hidden="true">RA7</div>
-          <div>
-            <div class="footer__name">RA7 Resort</div>
-            <div class="footer__meta">© {{ year }} • Crafted for calm stays</div>
-          </div>
-        </div>
-        <div class="footer__links" aria-label="Footer links">
-          <a class="footer__link" href="#stays">Rooms</a>
-          <a class="footer__link" href="#amenities">Amenities</a>
-          <a class="footer__link" href="#location">Location</a>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter />
   </div>
 </template>
 
 <script setup lang="ts">
+import SiteFooter from './component/footer.vue'
+
 useHead({
   title: 'RA7 Resort',
   meta: [
@@ -310,8 +297,6 @@ type Stay = {
   tab: StayTab
   tint: string
 }
-
-const year = new Date().getFullYear()
 
 const landscapes = Array.from({ length: 16 }, (_, i) => `/images/landscape${i + 1}.jpg`)
 const heroVideoUrl = '/videos/ra7.mp4'
@@ -493,13 +478,6 @@ function onBookNow() {
   letter-spacing: 0.5px;
   color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 12px 26px rgba(245, 158, 11, 0.22), 0 8px 18px rgba(245, 197, 66, 0.18);
-}
-
-.brand__mark--sm {
-  height: 34px;
-  width: 46px;
-  border-radius: 12px;
-  font-size: 13px;
 }
 
 .brand__name {
@@ -1219,52 +1197,6 @@ function onBookNow() {
   justify-content: flex-start;
 }
 
-.footer {
-  border-top: 1px solid rgba(2, 6, 23, 0.08);
-  padding: 20px 0 28px;
-  background: rgba(255, 255, 255, 0.55);
-}
-
-.footer__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.footer__name {
-  font-weight: 800;
-}
-
-.footer__meta {
-  margin-top: 2px;
-  color: var(--muted2);
-  font-size: 12px;
-}
-
-.footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.footer__link {
-  text-decoration: none;
-  color: var(--muted);
-  font-weight: 700;
-  font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  background: rgba(255, 255, 255, 0.74);
-}
-
-.footer__link:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.95);
-}
-
 @media (min-width: 860px) {
   .topbar__inner {
     grid-template-columns: 1fr auto 1fr;
@@ -1356,11 +1288,6 @@ function onBookNow() {
 
   .cta__actions {
     justify-content: flex-end;
-  }
-
-  .footer__inner {
-    flex-direction: row;
-    align-items: center;
   }
 }
 @media (prefers-reduced-motion: reduce) {
