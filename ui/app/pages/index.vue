@@ -6,7 +6,7 @@
 
     <main>
       <section
-        class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-[22px] min-[860px]:py-16 min-[860px]:pb-7"
+        class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-5.5 min-[860px]:py-16 min-[860px]:pb-7"
         aria-label="Welcome to RA7 Resort"
       >
         <div
@@ -26,7 +26,7 @@
         <div
           :class="[
             containerClass,
-            'relative grid grid-cols-1 items-center gap-[22px] min-[860px]:grid-cols-[1.05fr_0.95fr] min-[860px]:gap-[26px]',
+            'relative grid grid-cols-1 items-center gap-5.5 min-[860px]:grid-cols-[1.05fr_0.95fr] min-[860px]:gap-6.5',
           ]"
         >
           <div>
@@ -77,7 +77,7 @@
           </div>
 
           <div
-            class="relative h-80 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:right-[-80px] before:top-[-120px] before:h-[340px] before:w-[340px] before:rotate-[12deg] before:bg-[radial-gradient(circle_at_30%_30%,rgba(245,197,66,0.24),transparent_62%)] before:content-[''] after:absolute after:bottom-[-140px] after:left-[-120px] after:h-[420px] after:w-[420px] after:rotate-[-18deg] after:bg-[radial-gradient(circle_at_30%_30%,rgba(245,158,11,0.18),transparent_64%)] after:content-['']"
+            class="relative h-80 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:right-20 before:top-30 before:h-85 before:w-85 before:rotate-12 before:bg-[radial-gradient(circle_at_30%_30%,rgba(245,197,66,0.24),transparent_62%)] before:content-[''] after:absolute after:bottom-35 after:left-30 after:h-105 after:w-105 after:rotate-[-18deg] after:bg-[radial-gradient(circle_at_30%_30%,rgba(245,158,11,0.18),transparent_64%)] after:content-['']"
             aria-hidden="true"
           >
             <div :class="[heroCardClass, 'left-5.5 top-6 w-[min(320px,72%)]']">
@@ -248,7 +248,7 @@
           </div>
 
           <div
-            class="relative h-[260px] overflow-hidden rounded-[26px] border border-slate-950/10 bg-[radial-gradient(800px_280px_at_10%_20%,rgba(245,197,66,0.14),transparent_60%),radial-gradient(700px_240px_at_95%_30%,rgba(245,158,11,0.12),transparent_58%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:inset-0 before:bg-[linear-gradient(rgba(2,6,23,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(2,6,23,0.06)_1px,transparent_1px)] before:bg-[length:36px_36px] before:opacity-25 before:content-['']"
+            class="relative h-65 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[radial-gradient(800px_280px_at_10%_20%,rgba(245,197,66,0.14),transparent_60%),radial-gradient(700px_240px_at_95%_30%,rgba(245,158,11,0.12),transparent_58%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:inset-0 before:bg-[linear-gradient(rgba(2,6,23,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(2,6,23,0.06)_1px,transparent_1px)] before:bg-size:36px_36px] before:opacity-25 before:content-['']"
             aria-hidden="true"
           >
             <div class="absolute left-[55%] top-[52%] h-4.5 w-4.5 rounded-full bg-amber-500/95 shadow-[0_0_0_8px_rgba(245,158,11,0.18),0_18px_45px_rgba(0,0,0,0.18)]" />
@@ -264,7 +264,7 @@
         <div
           :class="[
             containerClass,
-            'grid grid-cols-1 gap-3.5 rounded-[26px] border border-slate-950/10 bg-[radial-gradient(800px_280px_at_10%_0%,rgba(245,197,66,0.18),transparent_55%),radial-gradient(600px_240px_at_100%_40%,rgba(245,158,11,0.14),transparent_58%),rgba(255,255,255,0.82)] px-4.5 py-[22px] shadow-[0_18px_60px_rgba(2,6,23,0.12)] min-[860px]:grid-cols-[1fr_auto] min-[860px]:items-center min-[860px]:px-6 min-[860px]:py-[26px]',
+            'grid grid-cols-1 gap-3.5 rounded-[26px] border border-slate-950/10 bg-[radial-gradient(800px_280px_at_10%_0%,rgba(245,197,66,0.18),transparent_55%),radial-gradient(600px_240px_at_100%_40%,rgba(245,158,11,0.14),transparent_58%),rgba(255,255,255,0.82)] px-4.5 py-5.5 shadow-[0_18px_60px_rgba(2,6,23,0.12)] min-[860px]:grid-cols-[1fr_auto] min-[860px]:items-center min-[860px]:px-6 min-[860px]:py-5.5',
           ]"
         >
           <div>
