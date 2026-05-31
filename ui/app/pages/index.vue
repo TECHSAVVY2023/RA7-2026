@@ -1,33 +1,6 @@
 <template>
   <div class="page">
-    <header class="topbar">
-      <div class="container topbar__inner">
-        <div class="brand" aria-label="RA7 Resort">
-          <div class="brand__mark" aria-hidden="true">RA7</div>
-          <div class="brand__text">
-            <div class="brand__name">RA7 Resort</div>
-            <div class="brand__tag">Beach • Nature • Comfort</div>
-          </div>
-        </div>
-
-        <nav class="nav" aria-label="Primary">
-          <a class="nav__link" href="#highlights">Highlights</a>
-          <a class="nav__link" href="#stays">Stays</a>
-          <a class="nav__link" href="#amenities">Amenities</a>
-          <a class="nav__link" href="#gallery">Gallery</a>
-          <a class="nav__link" href="#location">Location</a>
-        </nav>
-
-        <div class="actions">
-          <button class="btn btn--ghost" type="button" @click="scrollTo('stays')">
-            View rooms
-          </button>
-          <button class="btn btn--primary" type="button" @click="scrollTo('book')">
-            Book now
-          </button>
-        </div>
-      </div>
-    </header>
+    <SiteNavbar />
 
     <main>
       <section class="hero" aria-label="Welcome to RA7 Resort">
@@ -271,6 +244,7 @@
 
 <script setup lang="ts">
 import SiteFooter from './component/footer.vue'
+import SiteNavbar from './component/navbar.vue'
 
 useHead({
   title: 'RA7 Resort',
@@ -436,88 +410,6 @@ function onBookNow() {
 .container {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(14px);
-  background: linear-gradient(to bottom, rgba(245, 247, 251, 0.92), rgba(245, 247, 251, 0.7));
-  border-bottom: 1px solid rgba(2, 6, 23, 0.08);
-}
-
-.topbar__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  padding: 14px 0;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 240px;
-}
-
-.brand__mark {
-  height: 42px;
-  width: 56px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 246, 197, 0.92) 0%,
-    rgba(245, 197, 66, 0.98) 38%,
-    rgba(245, 158, 11, 0.92) 68%,
-    rgba(154, 107, 18, 0.92) 100%
-  );
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 12px 26px rgba(245, 158, 11, 0.22), 0 8px 18px rgba(245, 197, 66, 0.18);
-}
-
-.brand__name {
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-
-.brand__tag {
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--muted2);
-}
-
-.nav {
-  display: none;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.nav__link {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  transition: background 180ms ease, color 180ms ease;
-}
-
-.nav__link:hover {
-  color: var(--text);
-  background: rgba(2, 6, 23, 0.04);
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: flex-start;
 }
 
 .btn {
@@ -1198,19 +1090,6 @@ function onBookNow() {
 }
 
 @media (min-width: 860px) {
-  .topbar__inner {
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-  }
-
-  .nav {
-    display: flex;
-  }
-
-  .actions {
-    justify-content: flex-end;
-  }
-
   .hero {
     padding: 64px 0 28px;
   }
@@ -1291,8 +1170,7 @@ function onBookNow() {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn,
-  .nav__link {
+  .btn {
     transition: none;
   }
 }
