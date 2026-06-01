@@ -43,7 +43,7 @@
 
                 <div class="mb-5 flex flex-col gap-2">
                   <label :class="labelClass" for="phone">Phone Number</label>
-                  <input id="phone" v-model="form.contact_number" :class="fieldClass" type="tel" placeholder="+63 900 000 0000">
+                  <input id="phone" v-model="form.contact_number" :class="fieldClass" type="text" @input="enforceElevenDigits" placeholder="0912-3456-789">
                 </div>
 
                 <div class="mb-5 flex flex-col gap-2">
@@ -132,6 +132,24 @@ type Inquiry = {
   lastname: string
   message: string
   created_at: string
+}
+
+const phoneNumber = ref('')
+
+const enforceElevenDigits = (event: Event) => {
+  const input = event.target as HTMLInputElement
+  
+  // 1. Remove any character that isn't a number
+  let cleaned = input.value.replace(/\D/g, '')
+  
+  // 2. Cut it off strictly at 11 digits
+  if (cleaned.length > 11) {
+    cleaned = cleaned.slice(0, 11)
+  }
+  
+  // 3. Update both the reactive state and the input field
+  phoneNumber.value = cleaned
+  input.value = cleaned
 }
 
 useHead({
