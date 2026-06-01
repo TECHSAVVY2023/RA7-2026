@@ -76,22 +76,6 @@
             </dl>
           </div>
 
-          <div
-            class="relative h-80 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:right-20 before:top-30 before:h-85 before:w-85 before:rotate-12 before:bg-[radial-gradient(circle_at_30%_30%,rgba(245,197,66,0.24),transparent_62%)] before:content-[''] after:absolute after:bottom-35 after:left-30 after:h-105 after:w-105 after:rotate-[-18deg] after:bg-[radial-gradient(circle_at_30%_30%,rgba(245,158,11,0.18),transparent_64%)] after:content-['']"
-            aria-hidden="true"
-          >
-            <div :class="[heroCardClass, 'left-5.5 top-6 w-[min(320px,72%)]']">
-              <div class="text-xs font-bold text-slate-950/48">Ocean breeze</div>
-              <div class="mt-1.5 font-extrabold tracking-[-0.2px]">All-day calm</div>
-            </div>
-            <div :class="[heroCardClass, 'bottom-6.5 right-5.5 w-[min(260px,68%)]']">
-              <div class="text-xs font-bold text-slate-950/48">Pool & lounge</div>
-              <div class="mt-1.5 font-extrabold tracking-[-0.2px]">Golden hour views</div>
-            </div>
-            <div :class="[heroCardClass, 'bottom-5.5 left-5.5 rounded-full px-3 py-2.5 text-xs font-bold text-slate-950/72']">
-              Free Wi‑Fi • Breakfast • Parking
-            </div>
-          </div>
         </div>
       </section>
 
@@ -331,8 +315,6 @@ const pillClass =
   'inline-flex items-center gap-2.5 rounded-full border border-slate-950/10 bg-white/80 px-3 py-2 text-[13px] font-semibold text-slate-950/66'
 const pillSoftClass =
   'inline-flex items-center rounded-full border border-slate-950/9 bg-white/72 px-2.5 py-[7px] text-xs font-semibold text-slate-950/66'
-const heroCardClass =
-  'absolute rounded-4.5 border border-slate-950/12 bg-white/70 p-3.5 backdrop-blur-[10px]'
 const sectionTitleClass = 'm-0 text-[26px] tracking-[-0.4px]'
 const sectionDescClass = 'm-0 max-w-[70ch] text-sm leading-normal text-slate-950/66'
 const iconBoxClass =
