@@ -1,39 +1,20 @@
 <template>
-  <div class="page">
-    <header class="topbar">
-      <div class="container topbar__inner">
-        <div class="brand" aria-label="RA7 Resort">
-          <div class="brand__mark" aria-hidden="true">RA7</div>
-          <div class="brand__text">
-            <div class="brand__name">RA7 Resort</div>
-            <div class="brand__tag">Beach • Nature • Comfort</div>
-          </div>
-        </div>
-
-        <nav class="nav" aria-label="Primary">
-          <a class="nav__link" href="#highlights">Highlights</a>
-          <a class="nav__link" href="#stays">Stays</a>
-          <a class="nav__link" href="#amenities">Amenities</a>
-          <a class="nav__link" href="#gallery">Gallery</a>
-          <a class="nav__link" href="#location">Location</a>
-        </nav>
-
-        <div class="actions">
-          <button class="btn btn--ghost" type="button" @click="scrollTo('stays')">
-            View rooms
-          </button>
-          <button class="btn btn--primary" type="button" @click="scrollTo('book')">
-            Book now
-          </button>
-        </div>
-      </div>
-    </header>
+  <div
+    class="min-h-screen bg-[#f5f7fb] text-slate-950/92 [background:radial-gradient(1200px_600px_at_12%_6%,rgba(245,197,66,0.18),transparent_58%),radial-gradient(900px_520px_at_92%_12%,rgba(245,158,11,0.16),transparent_58%),radial-gradient(820px_520px_at_55%_92%,rgba(154,107,18,0.08),transparent_60%),radial-gradient(600px_360px_at_30%_55%,rgba(255,255,255,0.55),transparent_60%),#f5f7fb]"
+  >
+    <SiteNavbar />
 
     <main>
-      <section class="hero" aria-label="Welcome to RA7 Resort">
-        <div class="hero__bg" aria-hidden="true">
+      <section
+        class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-5.5 min-[860px]:py-16 min-[860px]:pb-7"
+        aria-label="Welcome to RA7 Resort"
+      >
+        <div
+          class="absolute inset-0 saturate-[1.08] contrast-[1.05] after:absolute after:inset-0 after:bg-[linear-gradient(180deg,rgba(245,247,251,0.38)_0%,rgba(245,247,251,0.58)_46%,rgba(245,247,251,0.86)_100%),radial-gradient(900px_500px_at_80%_10%,rgba(245,197,66,0.2),transparent_60%),radial-gradient(900px_520px_at_22%_0%,rgba(245,158,11,0.16),transparent_62%),radial-gradient(700px_420px_at_50%_60%,rgba(255,255,255,0.45),transparent_62%)] after:content-['']"
+          aria-hidden="true"
+        >
           <video
-            class="hero__video"
+            class="block h-full w-full object-cover object-center"
             :src="heroVideoUrl"
             :poster="heroPosterUrl"
             autoplay
@@ -42,94 +23,117 @@
             playsinline
           />
         </div>
-        <div class="container hero__grid">
-          <div class="hero__copy">
-            <p class="pill">
-              <span class="pill__dot" aria-hidden="true" />
+        <div
+          :class="[
+            containerClass,
+            'relative grid grid-cols-1 items-center gap-5.5 min-[860px]:grid-cols-[1.05fr_0.95fr] min-[860px]:gap-6.5',
+          ]"
+        >
+          <div>
+            <p :class="pillClass">
+              <span
+                class="h-2.5 w-2.5 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.95),rgba(255,255,255,0.35))] shadow-[0_0_0_4px_rgba(245,197,66,0.18),0_10px_26px_rgba(245,158,11,0.14)]"
+                aria-hidden="true"
+              />
               Now welcoming guests
             </p>
-            <h1 class="hero__title">
+            <h1 class="my-0 mb-2.5 mt-3.5 text-[clamp(34px,5vw,56px)] leading-[1.02] tracking-[-0.8px]">
               Your next
-              <span class="hero__title-accent">sunset escape</span>
+              <span
+                class="bg-[linear-gradient(135deg,rgba(245,197,66,1)_0%,rgba(245,158,11,1)_60%,rgba(154,107,18,1)_100%)] bg-clip-text text-transparent"
+              >
+                sunset escape
+              </span>
               starts here.
             </h1>
-            <p class="hero__subtitle">
+            <p class="m-0 max-w-[58ch] text-[15px] leading-normal text-slate-950/66">
               RA7 is a modern island resort experience—calm mornings, bright afternoons, and
               cozy nights. Designed for weekend getaways, family trips, and quiet resets.
             </p>
 
-            <div class="hero__cta">
-              <button class="btn btn--primary btn--lg" type="button" @click="scrollTo('book')">
+            <div class="mt-4.5 flex flex-wrap gap-2.5">
+              <button :class="[buttonBaseClass, buttonPrimaryClass, buttonLgClass]" type="button" @click="scrollTo('book')">
                 Check availability
               </button>
-              <button class="btn btn--ghost btn--lg" type="button" @click="scrollTo('gallery')">
+              <button :class="[buttonBaseClass, buttonGhostClass, buttonLgClass]" type="button" @click="scrollTo('gallery')">
                 Explore the resort
               </button>
             </div>
 
-            <dl class="stats" aria-label="Resort highlights">
-              <div class="stat">
-                <dt class="stat__label">Best for</dt>
-                <dd class="stat__value">Relaxation</dd>
+            <dl class="mt-4.5 grid grid-cols-1 gap-2.5 pt-1.5 min-[860px]:grid-cols-3" aria-label="Resort highlights">
+              <div class="rounded-2xl border border-slate-950/10 bg-white/78 p-3">
+                <dt class="m-0 text-xs text-slate-950/48">Best for</dt>
+                <dd class="m-0 mt-1.5 font-bold">Relaxation</dd>
               </div>
-              <div class="stat">
-                <dt class="stat__label">Vibe</dt>
-                <dd class="stat__value">Tropical modern</dd>
+              <div class="rounded-2xl border border-slate-950/10 bg-white/78 p-3">
+                <dt class="m-0 text-xs text-slate-950/48">Vibe</dt>
+                <dd class="m-0 mt-1.5 font-bold">Tropical modern</dd>
               </div>
-              <div class="stat">
-                <dt class="stat__label">Signature</dt>
-                <dd class="stat__value">Sunset deck</dd>
+              <div class="rounded-2xl border border-slate-950/10 bg-white/78 p-3">
+                <dt class="m-0 text-xs text-slate-950/48">Signature</dt>
+                <dd class="m-0 mt-1.5 font-bold">Sunset deck</dd>
               </div>
             </dl>
           </div>
 
-          <div class="hero__visual" aria-hidden="true">
-            <div class="heroCard heroCard--main">
-              <div class="heroCard__label">Ocean breeze</div>
-              <div class="heroCard__value">All-day calm</div>
+          <div
+            class="relative h-80 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:right-20 before:top-30 before:h-85 before:w-85 before:rotate-12 before:bg-[radial-gradient(circle_at_30%_30%,rgba(245,197,66,0.24),transparent_62%)] before:content-[''] after:absolute after:bottom-35 after:left-30 after:h-105 after:w-105 after:rotate-[-18deg] after:bg-[radial-gradient(circle_at_30%_30%,rgba(245,158,11,0.18),transparent_64%)] after:content-['']"
+            aria-hidden="true"
+          >
+            <div :class="[heroCardClass, 'left-5.5 top-6 w-[min(320px,72%)]']">
+              <div class="text-xs font-bold text-slate-950/48">Ocean breeze</div>
+              <div class="mt-1.5 font-extrabold tracking-[-0.2px]">All-day calm</div>
             </div>
-            <div class="heroCard heroCard--side">
-              <div class="heroCard__label">Pool & lounge</div>
-              <div class="heroCard__value">Golden hour views</div>
+            <div :class="[heroCardClass, 'bottom-6.5 right-5.5 w-[min(260px,68%)]']">
+              <div class="text-xs font-bold text-slate-950/48">Pool & lounge</div>
+              <div class="mt-1.5 font-extrabold tracking-[-0.2px]">Golden hour views</div>
             </div>
-            <div class="heroCard heroCard--chip">Free Wi‑Fi • Breakfast • Parking</div>
+            <div :class="[heroCardClass, 'bottom-5.5 left-5.5 rounded-full px-3 py-2.5 text-xs font-bold text-slate-950/72']">
+              Free Wi‑Fi • Breakfast • Parking
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="highlights" class="section">
-        <div class="container">
-          <div class="section__head">
-            <h2 class="section__title">Why guests love RA7</h2>
-            <p class="section__desc">Simple comforts, thoughtful design, and a resort rhythm you’ll want to keep.</p>
+      <section id="highlights" class="py-11.5">
+        <div :class="containerClass">
+          <div class="mb-4.5 grid gap-2.5">
+            <h2 :class="sectionTitleClass">Why guests love RA7</h2>
+            <p :class="sectionDescClass">Simple comforts, thoughtful design, and a resort rhythm you’ll want to keep.</p>
           </div>
 
-          <div class="cards">
-            <article v-for="item in highlights" :key="item.title" class="card">
-              <div class="card__icon" aria-hidden="true">{{ item.icon }}</div>
-              <h3 class="card__title">{{ item.title }}</h3>
-              <p class="card__text">{{ item.text }}</p>
+          <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-4 min-[860px]:gap-3.5">
+            <article v-for="item in highlights" :key="item.title" class="rounded-4.5 border border-slate-950/10 bg-white/82 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.08)]">
+              <div :class="iconBoxClass" aria-hidden="true">{{ item.icon }}</div>
+              <h3 class="my-0 mb-1.5 mt-3 text-base font-bold">{{ item.title }}</h3>
+              <p class="m-0 text-sm leading-normal text-slate-950/66">{{ item.text }}</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="stays" class="section section--alt" aria-label="Stays and offers">
-        <div class="container">
-          <div class="section__head section__head--split">
+      <section
+        id="stays"
+        class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
+        aria-label="Stays and offers"
+      >
+        <div :class="containerClass">
+          <div class="mb-4.5 grid items-end gap-2.5 min-[860px]:grid-cols-[1fr_auto]">
             <div>
-              <h2 class="section__title">Stays that fit your mood</h2>
-              <p class="section__desc">Pick a room type, then tailor the experience with add-ons and activities.</p>
+              <h2 :class="sectionTitleClass">Stays that fit your mood</h2>
+              <p :class="sectionDescClass">Pick a room type, then tailor the experience with add-ons and activities.</p>
             </div>
-            <div class="segmented" role="tablist" aria-label="Stay categories">
+            <div class="grid grid-cols-3 gap-2 rounded-4.5 border border-slate-950/10 bg-white/78 p-2" role="tablist" aria-label="Stay categories">
               <button
                 v-for="tab in stayTabs"
                 :key="tab"
-                class="segmented__btn"
+                :class="[
+                  segmentedButtonClass,
+                  selectedStayTab === tab ? 'border-slate-950/12 bg-slate-950/4 text-slate-950/92' : 'border-transparent bg-transparent text-slate-950/66',
+                ]"
                 type="button"
                 role="tab"
                 :aria-selected="selectedStayTab === tab"
-                :class="{ 'is-active': selectedStayTab === tab }"
                 @click="selectedStayTab = tab"
               >
                 {{ tab }}
@@ -137,26 +141,30 @@
             </div>
           </div>
 
-          <div class="stayGrid">
-            <article v-for="stay in filteredStays" :key="stay.name" class="stay">
-              <div class="stay__media" :style="{ '--tint': stay.tint }" aria-hidden="true">
-                <div class="stay__badge">{{ stay.badge }}</div>
+          <div class="grid grid-cols-1 gap-3.5 min-[860px]:grid-cols-3">
+            <article v-for="stay in filteredStays" :key="stay.name" class="overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)]">
+              <div
+                class="relative h-37.5 after:absolute after:inset-0 after:bg-[linear-gradient(to_bottom,rgba(245,247,251,0.1),rgba(2,6,23,0.15))] after:content-['']"
+                :style="{ background: stay.tint }"
+                aria-hidden="true"
+              >
+                <div class="absolute left-3 top-3 z-1 rounded-full border border-slate-950/12 bg-white/78 px-2.5 py-1.75 text-xs font-extrabold">{{ stay.badge }}</div>
               </div>
-              <div class="stay__body">
-                <h3 class="stay__title">{{ stay.name }}</h3>
-                <p class="stay__text">{{ stay.desc }}</p>
-                <div class="stay__meta">
-                  <span class="pill pill--soft">{{ stay.guests }}</span>
-                  <span class="pill pill--soft">{{ stay.beds }}</span>
-                  <span class="pill pill--soft">{{ stay.view }}</span>
+              <div class="px-3.5 pb-4 pt-3.5">
+                <h3 class="m-0 text-base font-bold">{{ stay.name }}</h3>
+                <p class="m-0 mt-2 text-sm leading-normal text-slate-950/66">{{ stay.desc }}</p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span :class="pillSoftClass">{{ stay.guests }}</span>
+                  <span :class="pillSoftClass">{{ stay.beds }}</span>
+                  <span :class="pillSoftClass">{{ stay.view }}</span>
                 </div>
-                <div class="stay__footer">
-                  <div class="stay__price">
-                    <span class="stay__priceLabel">From</span>
-                    <span class="stay__priceValue">{{ stay.price }}</span>
-                    <span class="stay__priceNote">/ night</span>
+                <div class="mt-3.5 flex items-center justify-between gap-2.5">
+                  <div>
+                    <span class="text-xs font-bold text-slate-950/48">From</span>
+                    <span class="ml-2 inline-block font-black tracking-[-0.2px]">{{ stay.price }}</span>
+                    <span class="ml-1.5 text-xs text-slate-950/48">/ night</span>
                   </div>
-                  <button class="btn btn--primary" type="button" @click="scrollTo('book')">
+                  <button :class="[buttonBaseClass, buttonPrimaryClass]" type="button" @click="scrollTo('book')">
                     Reserve
                   </button>
                 </div>
@@ -166,98 +174,110 @@
         </div>
       </section>
 
-      <section id="amenities" class="section" aria-label="Amenities">
-        <div class="container">
-          <div class="section__head">
-            <h2 class="section__title">Amenities</h2>
-            <p class="section__desc">
+      <section id="amenities" class="py-11.5" aria-label="Amenities">
+        <div :class="containerClass">
+          <div class="mb-4.5 grid gap-2.5">
+            <h2 :class="sectionTitleClass">Amenities</h2>
+            <p :class="sectionDescClass">
               Everything you need to arrive, unwind, and stay present—without overthinking the details.
             </p>
           </div>
 
-          <div class="amenities">
-            <div v-for="a in amenities" :key="a.name" class="amenity">
-              <div class="amenity__icon" aria-hidden="true">{{ a.icon }}</div>
-              <div class="amenity__body">
-                <div class="amenity__name">{{ a.name }}</div>
-                <div class="amenity__desc">{{ a.desc }}</div>
+          <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-3">
+            <div v-for="a in amenities" :key="a.name" class="flex items-start gap-3 rounded-4.5 border border-slate-950/10 bg-white/82 p-3.5">
+              <div :class="[iconBoxClass, 'shrink-0']" aria-hidden="true">{{ a.icon }}</div>
+              <div>
+                <div class="font-extrabold">{{ a.name }}</div>
+                <div class="mt-1 text-sm leading-normal text-slate-950/66">{{ a.desc }}</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="gallery" class="section section--alt" aria-label="Gallery">
-        <div class="container">
-          <div class="section__head">
-            <h2 class="section__title">A peek inside RA7</h2>
-            <p class="section__desc">A calm palette, natural textures, and spaces that breathe.</p>
+      <section
+        id="gallery"
+        class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
+        aria-label="Gallery"
+      >
+        <div :class="containerClass">
+          <div class="mb-4.5 grid gap-2.5">
+            <h2 :class="sectionTitleClass">A peek inside RA7</h2>
+            <p :class="sectionDescClass">A calm palette, natural textures, and spaces that breathe.</p>
           </div>
 
-          <div class="gallery">
+          <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-12 min-[860px]:gap-3.5">
             <div
               v-for="g in gallery"
               :key="g.title"
-              class="shot"
+              class="relative min-h-37.5 overflow-hidden rounded-[22px] border border-slate-950/10 bg-cover bg-center shadow-[0_22px_60px_rgba(2,6,23,0.1)] after:absolute after:inset-0 after:bg-[linear-gradient(to_top,rgba(245,247,251,0.55),rgba(245,247,251,0.08))] after:content-[''] min-[860px]:nth-1:col-span-7 min-[860px]:nth-1:min-h-55 min-[860px]:nth-2:col-span-5 min-[860px]:nth-2:min-h-55 min-[860px]:nth-3:col-span-5 min-[860px]:nth-3:min-h-52.5 min-[860px]:nth-4:col-span-7 min-[860px]:nth-4:min-h-52.5 min-[860px]:nth-5:col-span-12 min-[860px]:nth-5:min-h-55"
               :style="{ backgroundImage: `url(${g.image})` }"
             >
-              <div class="shot__overlay">
-                <div class="shot__title">{{ g.title }}</div>
-                <div class="shot__text">{{ g.text }}</div>
+              <div class="absolute inset-x-3.5 bottom-3.5 z-1 rounded-2xl border border-slate-950/8 bg-white/72 p-3 backdrop-blur-sm">
+                <div class="font-black tracking-[-0.2px]">{{ g.title }}</div>
+                <div class="mt-1 text-[13px] text-slate-950/66">{{ g.text }}</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="location" class="section" aria-label="Location">
-        <div class="container location">
-          <div class="location__copy">
-            <h2 class="section__title">Easy to reach, hard to leave</h2>
-            <p class="section__desc">
+      <section id="location" class="py-11.5" aria-label="Location">
+        <div :class="[containerClass, 'grid grid-cols-1 items-center gap-3.5 min-[860px]:grid-cols-2 min-[860px]:gap-4.5']">
+          <div>
+            <h2 :class="sectionTitleClass">Easy to reach, hard to leave</h2>
+            <p :class="sectionDescClass">
               Share your exact address and we’ll plug it in—meanwhile, here’s a clean preview section for directions,
               nearby spots, and travel time.
             </p>
 
-            <div class="location__facts">
-              <div class="fact">
-                <div class="fact__k">Check-in</div>
-                <div class="fact__v">2:00 PM</div>
+            <div class="mt-4 grid grid-cols-1 gap-2.5 min-[860px]:grid-cols-3">
+              <div class="rounded-4.5 border border-white/10 bg-white/4 p-3">
+                <div class="text-xs font-extrabold text-slate-950/48">Check-in</div>
+                <div class="mt-1.5 font-extrabold">2:00 PM</div>
               </div>
-              <div class="fact">
-                <div class="fact__k">Check-out</div>
-                <div class="fact__v">12:00 PM</div>
+              <div class="rounded-4.5 border border-white/10 bg-white/4 p-3">
+                <div class="text-xs font-extrabold text-slate-950/48">Check-out</div>
+                <div class="mt-1.5 font-extrabold">12:00 PM</div>
               </div>
-              <div class="fact">
-                <div class="fact__k">Front desk</div>
-                <div class="fact__v">24/7 support</div>
+              <div class="rounded-4.5 border border-white/10 bg-white/4 p-3">
+                <div class="text-xs font-extrabold text-slate-950/48">Front desk</div>
+                <div class="mt-1.5 font-extrabold">24/7 support</div>
               </div>
             </div>
           </div>
 
-          <div class="mapMock" aria-hidden="true">
-            <div class="mapMock__pin" />
-            <div class="mapMock__label">
-              <div class="mapMock__name">RA7 Resort</div>
-              <div class="mapMock__meta">Coastal drive • Scenic route</div>
+          <div
+            class="relative h-65 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[radial-gradient(800px_280px_at_10%_20%,rgba(245,197,66,0.14),transparent_60%),radial-gradient(700px_240px_at_95%_30%,rgba(245,158,11,0.12),transparent_58%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:inset-0 before:bg-[linear-gradient(rgba(2,6,23,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(2,6,23,0.06)_1px,transparent_1px)] before:bg-size:36px_36px] before:opacity-25 before:content-['']"
+            aria-hidden="true"
+          >
+            <div class="absolute left-[55%] top-[52%] h-4.5 w-4.5 rounded-full bg-amber-500/95 shadow-[0_0_0_8px_rgba(245,158,11,0.18),0_18px_45px_rgba(0,0,0,0.18)]" />
+            <div class="absolute inset-x-4.5 bottom-4.5 rounded-4.5 border border-slate-950/12 bg-white/74 p-3.5 backdrop-blur-[10px]">
+              <div class="font-black">RA7 Resort</div>
+              <div class="mt-1 text-[13px] text-slate-950/66">Coastal drive • Scenic route</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="book" class="cta" aria-label="Book now">
-        <div class="container cta__inner">
-          <div class="cta__copy">
-            <h2 class="cta__title">Ready for your RA7 getaway?</h2>
-            <p class="cta__text">
+      <section id="book" class="pb-12.5 pt-8.5" aria-label="Book now">
+        <div
+          :class="[
+            containerClass,
+            'grid grid-cols-1 gap-3.5 rounded-[26px] border border-slate-950/10 bg-[radial-gradient(800px_280px_at_10%_0%,rgba(245,197,66,0.18),transparent_55%),radial-gradient(600px_240px_at_100%_40%,rgba(245,158,11,0.14),transparent_58%),rgba(255,255,255,0.82)] px-4.5 py-5.5 shadow-[0_18px_60px_rgba(2,6,23,0.12)] min-[860px]:grid-cols-[1fr_auto] min-[860px]:items-center min-[860px]:px-6 min-[860px]:py-5.5',
+          ]"
+        >
+          <div>
+            <h2 class="m-0 text-2xl tracking-[-0.4px]">Ready for your RA7 getaway?</h2>
+            <p class="m-0 mt-2.5 max-w-[70ch] text-sm leading-normal text-slate-950/66">
               Tap “Book now” to continue to your reservation flow (hook this up to your backend when ready).
             </p>
           </div>
-          <div class="cta__actions">
-            <button class="btn btn--primary btn--xl" type="button" @click="onBookNow">
+          <div class="flex flex-wrap items-center justify-start gap-2.5 min-[860px]:justify-end">
+            <button :class="[buttonBaseClass, buttonPrimaryClass, buttonXlClass]" type="button" @click="onBookNow">
               Book now
             </button>
-            <button class="btn btn--ghost btn--xl" type="button" @click="scrollTo('highlights')">
+            <button :class="[buttonBaseClass, buttonGhostClass, buttonXlClass]" type="button" @click="scrollTo('highlights')">
               Browse details
             </button>
           </div>
@@ -265,26 +285,14 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container footer__inner">
-        <div class="footer__brand">
-          <div class="brand__mark brand__mark--sm" aria-hidden="true">RA7</div>
-          <div>
-            <div class="footer__name">RA7 Resort</div>
-            <div class="footer__meta">© {{ year }} • Crafted for calm stays</div>
-          </div>
-        </div>
-        <div class="footer__links" aria-label="Footer links">
-          <a class="footer__link" href="#stays">Rooms</a>
-          <a class="footer__link" href="#amenities">Amenities</a>
-          <a class="footer__link" href="#location">Location</a>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter />
   </div>
 </template>
 
 <script setup lang="ts">
+import SiteFooter from './component/footer.vue'
+import SiteNavbar from './component/navbar.vue'
+
 useHead({
   title: 'RA7 Resort',
   meta: [
@@ -311,7 +319,26 @@ type Stay = {
   tint: string
 }
 
-const year = new Date().getFullYear()
+const containerClass = 'mx-auto w-[min(1120px,calc(100%_-_40px))]'
+const buttonBaseClass =
+  'relative cursor-pointer appearance-none rounded-[14px] border border-white/92 bg-white/80 px-3 py-2.5 text-[13px] font-semibold text-slate-950/92 transition duration-150 hover:-translate-y-px hover:border-white/98 hover:bg-white/95 active:translate-y-0 motion-reduce:transition-none'
+const buttonPrimaryClass =
+  'overflow-hidden border-amber-500/34 bg-[linear-gradient(135deg,rgba(255,246,197,0.96)_0%,rgba(245,197,66,0.96)_32%,rgba(245,158,11,0.92)_62%,rgba(154,107,18,0.92)_100%)] text-[#291803]/92 shadow-[0_16px_40px_rgba(245,158,11,0.18),0_10px_22px_rgba(245,197,66,0.14)] after:pointer-events-none after:absolute after:-inset-0.5 after:-translate-x-[140%] after:bg-[linear-gradient(105deg,transparent_0%,rgba(255,255,255,0.55)_42%,transparent_62%)] after:mix-blend-overlay after:transition-transform after:duration-[650ms] after:content-[\'\'] hover:bg-[linear-gradient(135deg,rgba(255,246,197,0.98)_0%,rgba(245,197,66,0.99)_32%,rgba(245,158,11,0.95)_62%,rgba(154,107,18,0.95)_100%)] hover:after:translate-x-[140%] motion-reduce:after:transition-none'
+const buttonGhostClass = 'bg-transparent'
+const buttonLgClass = 'rounded-2xl px-4 py-3 text-sm'
+const buttonXlClass = 'rounded-4.5 px-4.5 py-3.5 text-sm'
+const pillClass =
+  'inline-flex items-center gap-2.5 rounded-full border border-slate-950/10 bg-white/80 px-3 py-2 text-[13px] font-semibold text-slate-950/66'
+const pillSoftClass =
+  'inline-flex items-center rounded-full border border-slate-950/9 bg-white/72 px-2.5 py-[7px] text-xs font-semibold text-slate-950/66'
+const heroCardClass =
+  'absolute rounded-4.5 border border-slate-950/12 bg-white/70 p-3.5 backdrop-blur-[10px]'
+const sectionTitleClass = 'm-0 text-[26px] tracking-[-0.4px]'
+const sectionDescClass = 'm-0 max-w-[70ch] text-sm leading-normal text-slate-950/66'
+const iconBoxClass =
+  'grid h-10 w-10 place-items-center rounded-[14px] border border-slate-950/8 bg-slate-950/3 text-lg'
+const segmentedButtonClass =
+  'cursor-pointer rounded-[14px] border px-2.5 py-2.5 text-[13px] font-bold transition-colors duration-150 motion-reduce:transition-none'
 
 const landscapes = Array.from({ length: 16 }, (_, i) => `/images/landscape${i + 1}.jpg`)
 const heroVideoUrl = '/videos/ra7.mp4'
@@ -426,947 +453,3 @@ function onBookNow() {
 }
 </script>
 
-<style scoped>
-.page {
-  --bg: #f5f7fb;
-  --panel: rgba(255, 255, 255, 0.78);
-  --panel2: rgba(255, 255, 255, 0.92);
-  --border: rgba(2, 6, 23, 0.1);
-  --text: rgba(2, 6, 23, 0.92);
-  --muted: rgba(2, 6, 23, 0.66);
-  --muted2: rgba(2, 6, 23, 0.48);
-  --accent: #f5c542;
-  --accent2: #f59e0b;
-  --goldDeep: #9a6b12;
-  --goldSoft: rgba(245, 197, 66, 0.55);
-  --shadow: 0 18px 60px rgba(2, 6, 23, 0.12);
-  color: var(--text);
-  background: radial-gradient(1200px 600px at 12% 6%, rgba(245, 197, 66, 0.18), transparent 58%),
-    radial-gradient(900px 520px at 92% 12%, rgba(245, 158, 11, 0.16), transparent 58%),
-    radial-gradient(820px 520px at 55% 92%, rgba(154, 107, 18, 0.08), transparent 60%),
-    radial-gradient(600px 360px at 30% 55%, rgba(255, 255, 255, 0.55), transparent 60%), var(--bg);
-  min-height: 100vh;
-}
-
-.container {
-  width: min(1120px, calc(100% - 40px));
-  margin: 0 auto;
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(14px);
-  background: linear-gradient(to bottom, rgba(245, 247, 251, 0.92), rgba(245, 247, 251, 0.7));
-  border-bottom: 1px solid rgba(2, 6, 23, 0.08);
-}
-
-.topbar__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  padding: 14px 0;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 240px;
-}
-
-.brand__mark {
-  height: 42px;
-  width: 56px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 246, 197, 0.92) 0%,
-    rgba(245, 197, 66, 0.98) 38%,
-    rgba(245, 158, 11, 0.92) 68%,
-    rgba(154, 107, 18, 0.92) 100%
-  );
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 12px 26px rgba(245, 158, 11, 0.22), 0 8px 18px rgba(245, 197, 66, 0.18);
-}
-
-.brand__mark--sm {
-  height: 34px;
-  width: 46px;
-  border-radius: 12px;
-  font-size: 13px;
-}
-
-.brand__name {
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-
-.brand__tag {
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--muted2);
-}
-
-.nav {
-  display: none;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.nav__link {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  transition: background 180ms ease, color 180ms ease;
-}
-
-.nav__link:hover {
-  color: var(--text);
-  background: rgba(2, 6, 23, 0.04);
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.btn {
-  appearance: none;
-  border: 1px solid rgba(255, 255, 255, 0.92);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--text);
-  border-radius: 14px;
-  padding: 10px 12px;
-  font-weight: 600;
-  font-size: 13px;
-  cursor: pointer;
-  transition: transform 120ms ease, background 150ms ease, border-color 150ms ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(255, 255, 255, 0.98);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn--primary {
-  border-color: rgba(245, 158, 11, 0.34);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 246, 197, 0.96) 0%,
-    rgba(245, 197, 66, 0.96) 32%,
-    rgba(245, 158, 11, 0.92) 62%,
-    rgba(154, 107, 18, 0.92) 100%
-  );
-  color: rgba(41, 24, 3, 0.92);
-  box-shadow: 0 16px 40px rgba(245, 158, 11, 0.18), 0 10px 22px rgba(245, 197, 66, 0.14);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn--primary:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 246, 197, 0.98) 0%,
-    rgba(245, 197, 66, 0.99) 32%,
-    rgba(245, 158, 11, 0.95) 62%,
-    rgba(154, 107, 18, 0.95) 100%
-  );
-}
-
-.btn--primary::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.55) 42%, transparent 62%);
-  transform: translateX(-140%);
-  transition: transform 650ms ease;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-}
-
-.btn--primary:hover::after {
-  transform: translateX(140%);
-}
-
-.btn--ghost {
-  background: transparent;
-}
-
-.btn--lg {
-  padding: 12px 16px;
-  border-radius: 16px;
-  font-size: 14px;
-}
-
-.btn--xl {
-  padding: 14px 18px;
-  border-radius: 18px;
-  font-size: 14px;
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(2, 6, 23, 0.08);
-  padding: 44px 0 22px;
-}
-
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  filter: saturate(1.08) contrast(1.05);
-}
-
-.hero__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.hero__bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-      180deg,
-      rgba(245, 247, 251, 0.38) 0%,
-      rgba(245, 247, 251, 0.58) 46%,
-      rgba(245, 247, 251, 0.86) 100%
-    ),
-    radial-gradient(900px 500px at 80% 10%, rgba(245, 197, 66, 0.2), transparent 60%),
-    radial-gradient(900px 520px at 22% 0%, rgba(245, 158, 11, 0.16), transparent 62%),
-    radial-gradient(700px 420px at 50% 60%, rgba(255, 255, 255, 0.45), transparent 62%);
-}
-
-.hero__grid {
-  display: grid;
-  gap: 22px;
-  grid-template-columns: 1fr;
-  align-items: center;
-  position: relative;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  color: var(--muted);
-  font-weight: 600;
-  font-size: 13px;
-}
-
-.pill--soft {
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(2, 6, 23, 0.09);
-  font-weight: 600;
-  font-size: 12px;
-  padding: 7px 10px;
-}
-
-.pill__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.35));
-  box-shadow: 0 0 0 4px rgba(245, 197, 66, 0.18), 0 10px 26px rgba(245, 158, 11, 0.14);
-}
-
-.hero__title {
-  margin: 14px 0 10px;
-  font-size: clamp(34px, 5vw, 56px);
-  line-height: 1.02;
-  letter-spacing: -0.8px;
-}
-
-.hero__title-accent {
-  background: linear-gradient(135deg, rgba(245, 197, 66, 1) 0%, rgba(245, 158, 11, 1) 60%, rgba(154, 107, 18, 1) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero__subtitle {
-  margin: 0;
-  color: var(--muted);
-  max-width: 58ch;
-  line-height: 1.5;
-  font-size: 15px;
-}
-
-.hero__cta {
-  margin-top: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.stats {
-  margin: 18px 0 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  padding-top: 6px;
-}
-
-.stat {
-  padding: 12px 12px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  border-radius: 16px;
-}
-
-.stat__label {
-  color: var(--muted2);
-  font-size: 12px;
-  margin: 0;
-}
-
-.stat__value {
-  margin: 6px 0 0;
-  font-weight: 700;
-}
-
-.hero__visual {
-  position: relative;
-  height: 320px;
-  border-radius: 26px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62));
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.hero__visual::before {
-  content: '';
-  position: absolute;
-  inset: -120px -80px auto auto;
-  width: 340px;
-  height: 340px;
-  background: radial-gradient(circle at 30% 30%, rgba(245, 197, 66, 0.24), transparent 62%);
-  transform: rotate(12deg);
-}
-
-.hero__visual::after {
-  content: '';
-  position: absolute;
-  inset: auto auto -140px -120px;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.18), transparent 64%);
-  transform: rotate(-18deg);
-}
-
-.heroCard {
-  position: absolute;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(2, 6, 23, 0.12);
-  backdrop-filter: blur(10px);
-  padding: 14px 14px;
-}
-
-.heroCard__label {
-  color: var(--muted2);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.heroCard__value {
-  margin-top: 6px;
-  font-weight: 800;
-  letter-spacing: -0.2px;
-}
-
-.heroCard--main {
-  inset: 24px auto auto 22px;
-  width: min(320px, 72%);
-}
-
-.heroCard--side {
-  inset: auto 22px 26px auto;
-  width: min(260px, 68%);
-}
-
-.heroCard--chip {
-  inset: auto auto 22px 22px;
-  padding: 10px 12px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 12px;
-  color: rgba(2, 6, 23, 0.72);
-}
-
-.section {
-  padding: 46px 0;
-}
-
-.section--alt {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.42));
-  border-top: 1px solid rgba(2, 6, 23, 0.08);
-  border-bottom: 1px solid rgba(2, 6, 23, 0.08);
-}
-
-.section__head {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.section__head--split {
-  align-items: end;
-}
-
-.section__title {
-  margin: 0;
-  font-size: 26px;
-  letter-spacing: -0.4px;
-}
-
-.section__desc {
-  margin: 0;
-  color: var(--muted);
-  max-width: 70ch;
-  line-height: 1.5;
-  font-size: 14px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.card {
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.82);
-  padding: 16px 16px;
-  box-shadow: 0 18px 48px rgba(2, 6, 23, 0.08);
-}
-
-.card__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: rgba(2, 6, 23, 0.03);
-  border: 1px solid rgba(2, 6, 23, 0.08);
-  font-size: 18px;
-}
-
-.card__title {
-  margin: 12px 0 6px;
-  font-size: 16px;
-}
-
-.card__text {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.5;
-  font-size: 14px;
-}
-
-.segmented {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 8px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  border-radius: 18px;
-}
-
-.segmented__btn {
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--muted);
-  font-weight: 700;
-  font-size: 13px;
-  border-radius: 14px;
-  padding: 10px 10px;
-  cursor: pointer;
-  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
-}
-
-.segmented__btn.is-active {
-  background: rgba(2, 6, 23, 0.04);
-  border-color: rgba(2, 6, 23, 0.12);
-  color: var(--text);
-}
-
-.stayGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.stay {
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: 0 20px 55px rgba(2, 6, 23, 0.1);
-}
-
-.stay__media {
-  height: 150px;
-  background: var(--tint);
-  position: relative;
-}
-
-.stay__media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(245, 247, 251, 0.1), rgba(2, 6, 23, 0.15));
-}
-
-.stay__badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 1;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(2, 6, 23, 0.12);
-  font-weight: 800;
-  font-size: 12px;
-}
-
-.stay__body {
-  padding: 14px 14px 16px;
-}
-
-.stay__title {
-  margin: 0;
-  font-size: 16px;
-}
-
-.stay__text {
-  margin: 8px 0 0;
-  color: var(--muted);
-  line-height: 1.5;
-  font-size: 14px;
-}
-
-.stay__meta {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.stay__footer {
-  margin-top: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.stay__priceLabel {
-  color: var(--muted2);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.stay__priceValue {
-  display: inline-block;
-  margin-left: 8px;
-  font-weight: 900;
-  letter-spacing: -0.2px;
-}
-
-.stay__priceNote {
-  color: var(--muted2);
-  font-size: 12px;
-  margin-left: 6px;
-}
-
-.amenities {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.amenity {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 14px 14px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(2, 6, 23, 0.1);
-}
-
-.amenity__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: rgba(2, 6, 23, 0.03);
-  border: 1px solid rgba(2, 6, 23, 0.08);
-  font-size: 18px;
-  flex: 0 0 auto;
-}
-
-.amenity__name {
-  font-weight: 800;
-}
-
-.amenity__desc {
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.shot {
-  position: relative;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  min-height: 150px;
-  background-position: center;
-  background-size: cover;
-  box-shadow: 0 22px 60px rgba(2, 6, 23, 0.1);
-}
-
-.shot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(245, 247, 251, 0.55), rgba(245, 247, 251, 0.08));
-}
-
-.shot__overlay {
-  position: absolute;
-  inset: auto 14px 14px 14px;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(2, 6, 23, 0.08);
-  border-radius: 16px;
-  padding: 12px 12px;
-  backdrop-filter: blur(8px);
-}
-
-.shot__title {
-  font-weight: 900;
-  letter-spacing: -0.2px;
-}
-
-.shot__text {
-  margin-top: 4px;
-  color: rgba(2, 6, 23, 0.66);
-  font-size: 13px;
-}
-
-.location {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  align-items: center;
-}
-
-.location__facts {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.fact {
-  padding: 12px 12px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.fact__k {
-  color: var(--muted2);
-  font-weight: 800;
-  font-size: 12px;
-}
-
-.fact__v {
-  margin-top: 6px;
-  font-weight: 800;
-}
-
-.mapMock {
-  position: relative;
-  border-radius: 26px;
-  height: 260px;
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  background: radial-gradient(800px 280px at 10% 20%, rgba(245, 197, 66, 0.14), transparent 60%),
-    radial-gradient(700px 240px at 95% 30%, rgba(245, 158, 11, 0.12), transparent 58%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62));
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.mapMock::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(2, 6, 23, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(2, 6, 23, 0.06) 1px, transparent 1px);
-  background-size: 36px 36px;
-  opacity: 0.25;
-}
-
-.mapMock__pin {
-  position: absolute;
-  left: 55%;
-  top: 52%;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: rgba(245, 158, 11, 0.95);
-  box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.18), 0 18px 45px rgba(0, 0, 0, 0.18);
-}
-
-.mapMock__label {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  right: 18px;
-  padding: 14px 14px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1px solid rgba(2, 6, 23, 0.12);
-  backdrop-filter: blur(10px);
-}
-
-.mapMock__name {
-  font-weight: 900;
-}
-
-.mapMock__meta {
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.cta {
-  padding: 34px 0 50px;
-}
-
-.cta__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  padding: 22px 18px;
-  border-radius: 26px;
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  background: radial-gradient(800px 280px at 10% 0%, rgba(245, 197, 66, 0.18), transparent 55%),
-    radial-gradient(600px 240px at 100% 40%, rgba(245, 158, 11, 0.14), transparent 58%),
-    rgba(255, 255, 255, 0.82);
-  box-shadow: var(--shadow);
-}
-
-.cta__title {
-  margin: 0;
-  font-size: 24px;
-  letter-spacing: -0.4px;
-}
-
-.cta__text {
-  margin: 10px 0 0;
-  color: var(--muted);
-  max-width: 70ch;
-  line-height: 1.5;
-  font-size: 14px;
-}
-
-.cta__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.footer {
-  border-top: 1px solid rgba(2, 6, 23, 0.08);
-  padding: 20px 0 28px;
-  background: rgba(255, 255, 255, 0.55);
-}
-
-.footer__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.footer__name {
-  font-weight: 800;
-}
-
-.footer__meta {
-  margin-top: 2px;
-  color: var(--muted2);
-  font-size: 12px;
-}
-
-.footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.footer__link {
-  text-decoration: none;
-  color: var(--muted);
-  font-weight: 700;
-  font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(2, 6, 23, 0.1);
-  background: rgba(255, 255, 255, 0.74);
-}
-
-.footer__link:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.95);
-}
-
-@media (min-width: 860px) {
-  .topbar__inner {
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-  }
-
-  .nav {
-    display: flex;
-  }
-
-  .actions {
-    justify-content: flex-end;
-  }
-
-  .hero {
-    padding: 64px 0 28px;
-  }
-
-  .hero__grid {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 26px;
-  }
-
-  .stats {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .cards {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-  }
-
-  .section__head--split {
-    grid-template-columns: 1fr auto;
-  }
-
-  .stayGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .amenities {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .gallery {
-    grid-template-columns: repeat(12, 1fr);
-    gap: 14px;
-  }
-
-  .shot:nth-child(1) {
-    grid-column: span 7;
-    min-height: 220px;
-  }
-
-  .shot:nth-child(2) {
-    grid-column: span 5;
-    min-height: 220px;
-  }
-
-  .shot:nth-child(3) {
-    grid-column: span 5;
-    min-height: 210px;
-  }
-
-  .shot:nth-child(4) {
-    grid-column: span 7;
-    min-height: 210px;
-  }
-
-  .shot:nth-child(5) {
-    grid-column: span 12;
-    min-height: 220px;
-  }
-
-  .location {
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-
-  .location__facts {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .cta__inner {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    padding: 26px 24px;
-  }
-
-  .cta__actions {
-    justify-content: flex-end;
-  }
-
-  .footer__inner {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .btn,
-  .nav__link {
-    transition: none;
-  }
-}
-</style>

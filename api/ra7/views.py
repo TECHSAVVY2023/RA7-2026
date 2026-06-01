@@ -18,12 +18,98 @@ from rest_framework import generics, parsers, status
 
 # Create your views here.
 
+@method_decorator(csrf_exempt, name='dispatch')
 class ContactListView(APIView):
   def get(self, request, format=None):
     obj = ContactListModel.objects.all()
     serializer = ContactListSerializer(obj, many=True)
     
     return Response(serializer.data)
+
+  def post(self, request):
+    try:
+      form = ContactListForm(request.data)
+
+      if not form.is_valid():
+        return Response({
+          'status': 'error',
+          'message': 'Invalid form data',
+          'errors': form.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
+      
+      # Save the object to the database
+      obj = form.save(commit=False)
+      obj.save()
+
+      # Build context after validation
+      context = {
+        "contact_id": form.cleaned_data.get('contact_id'),
+        "firstname": form.cleaned_data.get('firstname'),
+        "lastname": form.cleaned_data.get('lastname'),
+        "contact_email": form.cleaned_data.get('contact_email'),
+        "contact_number": form.cleaned_data.get('contact_number'),
+        "message": form.cleaned_data.get('message'),
+      }
+
+      firstname = form.cleaned_data.get('firstname')
+      lastname = form.cleaned_data.get('lastname')
+      recipient_email = form.cleaned_data.get('contact_email')
+
+      # Subject lines
+      subject_inquiry = f"Inquiry from {firstname} {lastname}"
+      subject_thankyou = "Thank You for Contacting Fabrics Plus"
+
+      # Render HTML templates
+      html_message_inquiry = render_to_string('contact.html', context)
+      plain_message_inquiry = strip_tags(html_message_inquiry)
+
+      html_message_thankyou = render_to_string('thankyou.html', context)
+      plain_message_thankyou = strip_tags(html_message_thankyou)
+
+      # Internal team recipients
+      internal_recipients = [
+        'ra7@gmail.com',
+        'info@techsavvies.space'
+      ]
+
+      try:
+        # Send inquiry email to team
+        mail.send_mail(
+          subject_inquiry,
+          plain_message_inquiry,
+          'ra7@gmail.com',  # Use proper from email
+          internal_recipients,
+          html_message=html_message_inquiry,
+          fail_silently=False
+        )
+
+        # Send thank-you email to inquirer
+        mail.send_mail(
+          subject_thankyou,
+          plain_message_thankyou,
+          'RA7 <ra7@gmail.com>',  # Use proper from email
+          [recipient_email],
+          html_message=html_message_thankyou,
+          fail_silently=False
+        )
+
+        return Response({'status': 'created', 'email_status': 'sent'}, status=status.HTTP_200_OK)
+
+      except Exception as email_error:
+        print(f"Email sending error: {email_error}")
+        traceback.print_exc()
+        return Response({
+          'status': 'error',
+          'message': 'Failed to send email notifications'
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    except Exception as e:
+      print(f"General error in ContactListView POST: {e}")
+      traceback.print_exc()
+      return Response({
+        'status': 'error',
+        'message': 'Internal server error'
+      }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ContactCreateView(APIView):
@@ -58,87 +144,3 @@ class ContactDetailView(APIView):
 
     return Response(serializer.data)
   
-@method_decorator(csrf_exempt, name='dispatch')
-class SubmitToGmail(APIView):
-  def post(self, request):
-    try:
-      form = ContactListForm(request.data)
-
-      if not form.is_valid():
-        return Response({
-          'status': 'error',
-          'message': 'Invalid form data',
-          'errors': form.errors
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-      # Build context after validation
-      context = {
-        "contact_id": form.cleaned_data.get('contact_id'),
-        "firstname": form.cleaned_data.get('firstname'),
-        "lastname": form.cleaned_data.get('lastname'),
-        "contact_email": form.cleaned_data.get('contact_email'),
-        "contact_number": form.cleaned_data.get('contact_number'),
-        "message": form.cleaned_data.get('message'),
-      }
-
-      firstname = form.cleaned_data.get('firstname')
-      lastname = form.cleaned_data.get('lastname')
-      recipient_email = form.cleaned_data.get('contact_email')
-
-      # Subject lines
-      subject_inquiry = f"Inquiry from {firstname} {lastname}"
-      subject_thankyou = "Thank You for Contacting Fabrics Plus"
-
-      # Render HTML templates
-      html_message_inquiry = render_to_string('contact.html', context)
-      plain_message_inquiry = strip_tags(html_message_inquiry)
-
-      html_message_thankyou = render_to_string('thankyou.html', context)
-      plain_message_thankyou = strip_tags(html_message_thankyou)
-
-      # Internal team recipients
-      internal_recipients = [
-        'fabricplus05@gmail.com',
-        'info@fabricspluscurtains.com',
-        'fabrics_plus@yahoo.com'
-      ]
-
-      try:
-        # Send inquiry email to team
-        mail.send_mail(
-          subject_inquiry,
-          plain_message_inquiry,
-          'info@fabricspluscurtains.com',  # Use proper from email
-          internal_recipients,
-          html_message=html_message_inquiry,
-          fail_silently=False
-        )
-
-        # Send thank-you email to inquirer
-        mail.send_mail(
-          subject_thankyou,
-          plain_message_thankyou,
-          'Fabrics Plus <info@fabricspluscurtains.com>',  # Use proper from email
-          [recipient_email],
-          html_message=html_message_thankyou,
-          fail_silently=False
-        )
-
-        return Response({'status': 'sent'}, status=status.HTTP_200_OK)
-
-      except Exception as email_error:
-        print(f"Email sending error: {email_error}")
-        traceback.print_exc()
-        return Response({
-          'status': 'error',
-          'message': 'Failed to send email notifications'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    except Exception as e:
-      print(f"General error in SubmitToGmail: {e}")
-      traceback.print_exc()
-      return Response({
-        'status': 'error',
-        'message': 'Internal server error'
-      }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    

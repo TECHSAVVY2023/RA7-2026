@@ -17,5 +17,4 @@ urlpatterns = [
     path('contact/delete/<int:pk>/', views.ContactCreateView.as_view()),
     path('contact/edit/<int:pk>/', views.ContactCreateView.as_view()),
     path('contact/create/', views.ContactCreateView.as_view()),
-    path('contact/gmail-notif/', views.SubmitToGmail.as_view()),
 ]

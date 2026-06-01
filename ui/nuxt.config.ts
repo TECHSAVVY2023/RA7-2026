@@ -1,13 +1,30 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from '@tailwindcss/vite'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: false },
   srcDir: 'app/',
-  app: {
-    head: {
-      script: [
-        { src: 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4' }
+  future: { compatibilityVersion: 4 },
+  modules: ['@nuxt/eslint'],
+  eslint: { config: { standalone: true } },
+
+  // Add this section:
+  vite: {
+    plugins: [
+      tailwindcss()
+    ],
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit'
       ]
     }
-  }
+  },
+  // Runtime config for API
+  runtimeConfig: {
+    // Public keys (exposed to client)
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE,
+    }
+  },
+  css: ['~/assets/css/main.css']
 })
