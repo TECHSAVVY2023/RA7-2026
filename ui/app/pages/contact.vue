@@ -126,6 +126,14 @@
 import { ref, onMounted } from 'vue'
 import SiteNavbar from './component/navbar.vue'
 
+type Inquiry = {
+  id: number | string
+  firstname: string
+  lastname: string
+  message: string
+  created_at: string
+}
+
 useHead({
   title: 'Contact Us | RA7 Resort',
   meta: [
@@ -133,7 +141,7 @@ useHead({
   ]
 })
 
-const inquiries = ref([])
+const inquiries = ref<Inquiry[]>([])
 const loading = ref(true)
 const isSubmitting = ref(false)
 const successMsg = ref('')
