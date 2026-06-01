@@ -7,7 +7,7 @@
     >
       <div class="flex min-w-60 items-center gap-3" aria-label="RA7 Resort">
         <NuxtLink
-          to="/"
+          to="/#homepage"
           class="grid h-[42px] w-14 place-items-center rounded-[14px] bg-[linear-gradient(135deg,rgba(255,246,197,0.92)_0%,rgba(245,197,66,0.98)_38%,rgba(245,158,11,0.92)_68%,rgba(154,107,18,0.92)_100%)] font-extrabold tracking-[0.5px] text-white/95 shadow-[0_12px_26px_rgba(245,158,11,0.22),0_8px_18px_rgba(245,197,66,0.18)] cursor-pointer transition duration-150 hover:brightness-105"
         >
           RA7

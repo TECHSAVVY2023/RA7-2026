@@ -1,12 +1,13 @@
 <template>
   <div
+      id="homepage"
     class="min-h-screen bg-[#f5f7fb] text-slate-950/92 [background:radial-gradient(1200px_600px_at_12%_6%,rgba(245,197,66,0.18),transparent_58%),radial-gradient(900px_520px_at_92%_12%,rgba(245,158,11,0.16),transparent_58%),radial-gradient(820px_520px_at_55%_92%,rgba(154,107,18,0.08),transparent_60%),radial-gradient(600px_360px_at_30%_55%,rgba(255,255,255,0.55),transparent_60%),#f5f7fb]"
   >
     <SiteNavbar />
 
     <main>
       <section
-        class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-5.5 min-[860px]:py-16 min-[860px]:pb-7"
+        class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-5.5 min-[860px]:py-16 min-[860px]:pb-7 w-screen h-screen"
         aria-label="Welcome to RA7 Resort"
       >
         <div
@@ -32,12 +33,12 @@
           <div>
             <p :class="pillClass">
               <span
-                class="h-2.5 w-2.5 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.95),rgba(255,255,255,0.35))] shadow-[0_0_0_4px_rgba(245,197,66,0.18),0_10px_26px_rgba(245,158,11,0.14)]"
-                aria-hidden="true"
-              />
+  class="h-2.5 w-2.5 rounded-full bg-[radial-gradient(circle_at_30%_30%,#4ade80,#16a34a)] shadow-[0_0_0_4px_rgba(74,222,128,0.4),0_0_12px_rgba(22,163,74,0.8)]"
+  aria-hidden="true"
+/>
               Now welcoming guests
             </p>
-            <h1 class="my-0 mb-2.5 mt-3.5 text-[clamp(34px,5vw,56px)] leading-[1.02] tracking-[-0.8px]">
+            <h1 class="my-0 mb-2.5 mt-12 text-[clamp(34px,5vw,56px)] leading-[1.02] tracking-[-0.8px]">
               Your next
               <span
                 class="bg-[linear-gradient(135deg,rgba(245,197,66,1)_0%,rgba(245,158,11,1)_60%,rgba(154,107,18,1)_100%)] bg-clip-text text-transparent"
@@ -51,7 +52,7 @@
               cozy nights. Designed for weekend getaways, family trips, and quiet resets.
             </p>
 
-            <div class="mt-4.5 flex flex-wrap gap-2.5">
+            <div class="mt-25 flex flex-wrap gap-2.5">
               <button :class="[buttonBaseClass, buttonPrimaryClass, buttonLgClass]" type="button" @click="scrollTo('book')">
                 Check availability
               </button>
@@ -79,7 +80,10 @@
         </div>
       </section>
 
-      <section id="highlights" class="py-11.5">
+      <div id="highlights" class="mt-8">
+        &nbsp;
+      </div>
+      <section id="" class="py-11.5">
         <div :class="containerClass">
           <div class="mb-4.5 grid gap-2.5">
             <h2 :class="sectionTitleClass">Why guests love RA7</h2>
@@ -96,8 +100,11 @@
         </div>
       </section>
 
+      <div id="stays" class="mt-8">
+        &nbsp;
+      </div>
       <section
-        id="stays"
+        id=""
         class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
         aria-label="Stays and offers"
       >
@@ -158,7 +165,10 @@
         </div>
       </section>
 
-      <section id="amenities" class="py-11.5" aria-label="Amenities">
+      <div id="amenities" class="mt-8">
+        &nbsp;
+      </div>
+      <section id="" class="py-11.5" aria-label="Amenities">
         <div :class="containerClass">
           <div class="mb-4.5 grid gap-2.5">
             <h2 :class="sectionTitleClass">Amenities</h2>
@@ -179,8 +189,11 @@
         </div>
       </section>
 
+      <div id="gallery" class="mt-8">
+        &nbsp;
+      </div>
       <section
-        id="gallery"
+        id=""
         class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
         aria-label="Gallery"
       >
@@ -206,6 +219,9 @@
         </div>
       </section>
 
+      <div id="location" class="mt-8">
+        &nbsp;
+      </div>
       <section id="location" class="py-11.5" aria-label="Location">
         <div :class="[containerClass, 'grid grid-cols-1 items-center gap-3.5 min-[860px]:grid-cols-2 min-[860px]:gap-4.5']">
           <div>
