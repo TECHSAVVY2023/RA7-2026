@@ -124,6 +124,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import SiteNavbar from './component/navbar.vue'
 
 useHead({
   title: 'Contact Us | RA7 Resort',
@@ -137,6 +138,8 @@ const loading = ref(true)
 const isSubmitting = ref(false)
 const successMsg = ref('')
 const errorMsg = ref('')
+const config = useRuntimeConfig()
+const apiBase = String(config.public.apiBase).replace(/\/?$/, '/')
 
 const containerClass = 'mx-auto w-[min(1120px,calc(100%_-_40px))]'
 const brandMarkClass =
@@ -167,11 +170,12 @@ const form = ref({
 const fetchData = async () => {
   loading.value = true
   try {
-    const response = await fetch(`${config.public.apiBase}contact/list/`)
+    const response = await fetch(`${apiBase}contact/list/`)
     if (!response.ok) throw new Error('Failed to fetch')
     inquiries.value = await response.json()
-  } catch {
+  } catch (err) {
     console.error('Error fetching list:', err)
+    errorMsg.value = 'Unable to load recent inquiries.'
   } finally {
     loading.value = false
   }
@@ -183,7 +187,7 @@ const submitForm = async () => {
   successMsg.value = ''
   
   try {
-    const response = await fetch(`${config.public.apiBase}contact/list/`, {
+    const response = await fetch(`${apiBase}contact/list/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form.value)
@@ -191,7 +195,14 @@ const submitForm = async () => {
     
     if (response.ok) {
       successMsg.value = 'Thank you! Your message was sent successfully.'
-      form.value = { firstname: '', lastname: '', contact_email: '', contact_number: '', message: '' }
+      form.value = {
+        contact_id: 'CID' + Date.now().toString(),
+        firstname: '',
+        lastname: '',
+        contact_email: '',
+        contact_number: '',
+        message: ''
+      }
       fetchData() // Refresh list
     } else {
       errorMsg.value = 'Something went wrong. Please try again.'
