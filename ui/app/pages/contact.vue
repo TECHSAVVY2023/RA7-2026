@@ -124,8 +124,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-const config = useRuntimeConfig()
-
 
 useHead({
   title: 'Contact Us | RA7 Resort',
