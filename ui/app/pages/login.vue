@@ -65,8 +65,15 @@
         </div>
       </div>
     </div>
-
-    <div class="w-full lg:w-1/2 bg-white flex min-h-screen flex-col items-center justify-center px-6 py-10 sm:px-8 lg:px-12">
+    <div class="relative w-full lg:w-1/2 bg-white flex min-h-screen flex-col items-center justify-center px-6 py-10 sm:px-8 lg:px-12">
+      <NuxtLink
+        to="/"
+        class="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-700 hover:shadow-md sm:left-8 lg:left-12"
+        aria-label="Return to home page"
+      >
+        <Icon name="lucide:arrow-left" class="h-4 w-4" aria-hidden="true" />
+        <span>Home</span>
+      </NuxtLink>
       <div class="w-full max-w-md">
         <div class="mb-10 text-center">
          

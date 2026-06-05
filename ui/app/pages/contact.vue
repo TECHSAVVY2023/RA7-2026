@@ -2,8 +2,6 @@
   <div
     class="min-h-screen bg-[#f5f7fb] text-slate-950/92 [background:radial-gradient(1200px_600px_at_12%_6%,rgba(245,197,66,0.1),transparent_58%),radial-gradient(900px_520px_at_92%_12%,rgba(245,158,11,0.08),transparent_58%),#f5f7fb]"
   >
-    <SiteNavbar />
-
     <main>
       <section class="px-0 pb-10 pt-20 text-center">
         <div :class="containerClass">
@@ -108,23 +106,11 @@
       </section>
     </main>
 
-    <footer class="border-t border-slate-950/8 bg-white py-10">
-      <div :class="[containerClass, 'flex items-center justify-between']">
-        <div class="flex items-center gap-3">
-          <div :class="brandMarkClass" aria-hidden="true">RA7</div>
-          <div>
-            <div class="font-extrabold">RA7 Resort</div>
-            <div class="text-xs text-slate-950/48">© 2026 • Crafted for calm stays</div>
-          </div>
-        </div>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import SiteNavbar from './component/navbar.vue'
 
 type Inquiry = {
   id: number | string
@@ -168,8 +154,6 @@ const config = useRuntimeConfig()
 const apiBase = String(config.public.apiBase).replace(/\/?$/, '/')
 
 const containerClass = 'mx-auto w-[min(1120px,calc(100%_-_40px))]'
-const brandMarkClass =
-  'grid h-10.5 w-14 place-items-center rounded-[14px] bg-[linear-gradient(135deg,#f5c542,#f59e0b)] font-extrabold text-white shadow-[0_10px_20px_rgba(245,158,11,0.2)]'
 const buttonBaseClass =
   'inline-block cursor-pointer rounded-xl border-0 px-5 py-2.5 text-center font-semibold no-underline transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none'
 const buttonPrimaryClass =
