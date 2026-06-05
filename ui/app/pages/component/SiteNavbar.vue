@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-10 border-b border-slate-950/8 bg-gradient-to-b from-[#f5f7fb]/92 to-[#f5f7fb]/70 backdrop-blur-[14px]"
+    class="sticky top-0 z-10 border-b border-slate-950/8 bg-gradient-to-b from-[#F5F7FB76]/92 to-[#F5F7FB6B]/70 backdrop-blur-[14px]"
   >
     <div
       class="mx-auto grid w-[min(1120px,calc(100%_-_40px))] grid-cols-1 gap-3.5 py-3.5 min-[860px]:grid-cols-[1fr_auto_1fr] min-[860px]:items-center"
@@ -22,7 +22,7 @@
         <a
           v-for="link in navLinks"
           :key="link.href"
-          class="rounded-xl px-2.5 py-2 text-[13px] text-slate-950/66 no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
+          class="rounded-xl px-2.5 py-2 text-[13px] text-black no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
           :href="link.href"
         >
           {{ link.label }}

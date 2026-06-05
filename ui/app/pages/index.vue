@@ -1,7 +1,7 @@
 <template>
   <div
       id="homepage"
-    class="min-h-screen bg-[#f5f7fb] text-slate-950/92 [background:radial-gradient(1200px_600px_at_12%_6%,rgba(245,197,66,0.18),transparent_58%),radial-gradient(900px_520px_at_92%_12%,rgba(245,158,11,0.16),transparent_58%),radial-gradient(820px_520px_at_55%_92%,rgba(154,107,18,0.08),transparent_60%),radial-gradient(600px_360px_at_30%_55%,rgba(255,255,255,0.55),transparent_60%),#f5f7fb]"
+    class="min-h-screen bg-[#f5f7fb] text-slate-950/92 [background:radial-gradient(1200px_600px_at_12%_6%,rgba(245, 197, 66, 0.04),transparent_58%),radial-gradient(900px_520px_at_92%_12%,rgba(245,158,11,0.16),transparent_58%),radial-gradient(820px_520px_at_55%_92%,rgba(154,107,18,0.08),transparent_60%),radial-gradient(600px_360px_at_30%_55%,rgba(255, 255, 255, 0.36),transparent_60%),#f5f7fb]"
   >
 
     <main>
