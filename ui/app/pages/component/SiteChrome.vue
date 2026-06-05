@@ -12,5 +12,5 @@ import SiteNavbar from './SiteNavbar.vue'
 
 const route = useRoute()
 
-const showChrome = computed(() => !route.path.startsWith('/home'))
+const showChrome = computed(() => !route.path.startsWith('/login'))
 </script>
