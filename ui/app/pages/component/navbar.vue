@@ -61,9 +61,4 @@ const navLinks = [
   { label: 'Gallery', href: '/#gallery' },
   { label: 'Location', href: '/#location' },
 ]
-
-function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
 </script>

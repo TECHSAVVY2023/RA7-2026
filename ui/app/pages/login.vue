@@ -1,23 +1,27 @@
 <template>
-  <div class="min-h-screen bg-white flex">
+  <div class="min-h-screen bg-white lg:flex">
     <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-amber-50 via-orange-50 to-white items-center justify-center p-12 relative overflow-hidden">
       <div class="absolute inset-0">
         <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-amber-200/30 to-transparent rounded-full blur-3xl opacity-60 animate-pulse"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-200/30 to-transparent rounded-full blur-3xl opacity-60 animate-pulse"></div>
       </div>
 
-      <div class="relative z-10 text-center space-y-12 max-w-lg">
+      <div class="relative w-full max-w-lg text-center">
         <div class="space-y-6">
+          <div class="flex justify-center">
+            <NuxtLink
+              to="/"
+              class="inline-flex h-44 w-44 items-center justify-center overflow-hidden rounded-full bg-white shadow-xl shadow-amber-200/30 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              aria-label="Go to RA7 Resort home"
+            >
+              <img 
+                src="/ra7-logo.png" 
+                alt="RA7 Resort Paradise" 
+                class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </NuxtLink>
+          </div>
           <div>
-            <div class="flex justify-center items-center w-full">hi
-  <Link to="/">
-    <img 
-      src="/images/landscape1.jpg" 
-      alt="Logo" 
-      class="h-10 w-auto object-contain transition duration-150 hover:scale-105 active:scale-95"
-    />
-  </Link>
-</div>
             <h2 class="text-5xl font-bold bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 bg-clip-text text-transparent leading-tight mb-3">
               Escape to Paradise
             </h2>
@@ -62,16 +66,11 @@
       </div>
     </div>
 
-    <div class="w-full lg:w-1/2 bg-white flex flex-col items-center justify-center px-6 py-12 sm:px-8 lg:px-12">
+    <div class="w-full lg:w-1/2 bg-white flex min-h-screen flex-col items-center justify-center px-6 py-10 sm:px-8 lg:px-12">
       <div class="w-full max-w-md">
-        <div class="text-center mb-12 lg:hidden">
-          <h1 class="text-4xl font-bold bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 bg-clip-text text-transparent mb-2">
-            RA7 Resort
-          </h1>
-          <p class="text-slate-600">Step into luxury</p>
-        </div>
-
-        <div class="text-center mb-10">
+        <div class="mb-10 text-center">
+         
+          <p class="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">RA7 Resort</p>
           <h1 class="text-4xl font-bold text-slate-900 mb-3">Welcome!</h1>
           <p class="text-slate-600 text-lg">Sign in to access exclusive offers</p>
         </div>
