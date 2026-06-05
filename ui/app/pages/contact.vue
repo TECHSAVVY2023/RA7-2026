@@ -43,7 +43,7 @@
 
                 <div class="mb-5 flex flex-col gap-2">
                   <label :class="labelClass" for="phone">Phone Number</label>
-                  <input id="phone" v-model="form.contact_number" :class="fieldClass" type="tel" placeholder="+63 900 000 0000">
+                  <input id="phone" v-model="form.contact_number" :class="fieldClass" type="text" @input="enforceElevenDigits" placeholder="0912-3456-789">
                 </div>
 
                 <div class="mb-5 flex flex-col gap-2">
@@ -124,6 +124,33 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import SiteNavbar from './component/navbar.vue'
+
+type Inquiry = {
+  id: number | string
+  firstname: string
+  lastname: string
+  message: string
+  created_at: string
+}
+
+const phoneNumber = ref('')
+
+const enforceElevenDigits = (event: Event) => {
+  const input = event.target as HTMLInputElement
+  
+  // 1. Remove any character that isn't a number
+  let cleaned = input.value.replace(/\D/g, '')
+  
+  // 2. Cut it off strictly at 11 digits
+  if (cleaned.length > 11) {
+    cleaned = cleaned.slice(0, 11)
+  }
+  
+  // 3. Update both the reactive state and the input field
+  phoneNumber.value = cleaned
+  input.value = cleaned
+}
 
 useHead({
   title: 'Contact Us | RA7 Resort',
@@ -132,11 +159,13 @@ useHead({
   ]
 })
 
-const inquiries = ref([])
+const inquiries = ref<Inquiry[]>([])
 const loading = ref(true)
 const isSubmitting = ref(false)
 const successMsg = ref('')
 const errorMsg = ref('')
+const config = useRuntimeConfig()
+const apiBase = String(config.public.apiBase).replace(/\/?$/, '/')
 
 const containerClass = 'mx-auto w-[min(1120px,calc(100%_-_40px))]'
 const brandMarkClass =
@@ -167,11 +196,12 @@ const form = ref({
 const fetchData = async () => {
   loading.value = true
   try {
-    const response = await fetch(`${config.public.apiBase}contact/list/`)
+    const response = await fetch(`${apiBase}contact/list/`)
     if (!response.ok) throw new Error('Failed to fetch')
     inquiries.value = await response.json()
-  } catch {
+  } catch (err) {
     console.error('Error fetching list:', err)
+    errorMsg.value = 'Unable to load recent inquiries.'
   } finally {
     loading.value = false
   }
@@ -183,7 +213,7 @@ const submitForm = async () => {
   successMsg.value = ''
   
   try {
-    const response = await fetch(`${config.public.apiBase}contact/list/`, {
+    const response = await fetch(`${apiBase}contact/list/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form.value)
@@ -191,7 +221,14 @@ const submitForm = async () => {
     
     if (response.ok) {
       successMsg.value = 'Thank you! Your message was sent successfully.'
-      form.value = { firstname: '', lastname: '', contact_email: '', contact_number: '', message: '' }
+      form.value = {
+        contact_id: 'CID' + Date.now().toString(),
+        firstname: '',
+        lastname: '',
+        contact_email: '',
+        contact_number: '',
+        message: ''
+      }
       fetchData() // Refresh list
     } else {
       errorMsg.value = 'Something went wrong. Please try again.'

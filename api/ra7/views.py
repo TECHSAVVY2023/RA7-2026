@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.conf import settings
 from .forms import ContactListForm
 from .models import ContactListModel
 from .serializers import ContactListSerializer
@@ -66,18 +67,29 @@ class ContactListView(APIView):
       html_message_thankyou = render_to_string('thankyou.html', context)
       plain_message_thankyou = strip_tags(html_message_thankyou)
 
+      from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', '') or getattr(settings, 'EMAIL_HOST_USER', '')
+      email_backend = getattr(settings, 'EMAIL_BACKEND', '')
+
+      if email_backend == 'django.core.mail.backends.smtp.EmailBackend' and not from_email:
+        return Response({
+          'status': 'created',
+          'id': obj.id,
+          'email_status': 'skipped',
+          'message': 'Contact record created. Email credentials are not configured.'
+        }, status=status.HTTP_201_CREATED)
+
       # Internal team recipients
-      internal_recipients = [
-        'ra7@gmail.com',
+      internal_recipients = list(filter(None, [
+        getattr(settings, 'EMAIL_HOST_USER', ''),
         'info@techsavvies.space'
-      ]
+      ]))
 
       try:
         # Send inquiry email to team
         mail.send_mail(
           subject_inquiry,
           plain_message_inquiry,
-          'ra7@gmail.com',  # Use proper from email
+          from_email,
           internal_recipients,
           html_message=html_message_inquiry,
           fail_silently=False
@@ -87,21 +99,27 @@ class ContactListView(APIView):
         mail.send_mail(
           subject_thankyou,
           plain_message_thankyou,
-          'RA7 <ra7@gmail.com>',  # Use proper from email
+          f'RA7 <{from_email}>',
           [recipient_email],
           html_message=html_message_thankyou,
           fail_silently=False
         )
 
-        return Response({'status': 'created', 'email_status': 'sent'}, status=status.HTTP_200_OK)
+        return Response({
+          'status': 'created',
+          'id': obj.id,
+          'email_status': 'sent'
+        }, status=status.HTTP_201_CREATED)
 
       except Exception as email_error:
         print(f"Email sending error: {email_error}")
         traceback.print_exc()
         return Response({
-          'status': 'error',
-          'message': 'Failed to send email notifications'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+          'status': 'created',
+          'id': obj.id,
+          'email_status': 'failed',
+          'message': 'Contact record created, but email notifications failed.'
+        }, status=status.HTTP_201_CREATED)
 
     except Exception as e:
       print(f"General error in ContactListView POST: {e}")

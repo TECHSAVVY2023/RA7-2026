@@ -1,12 +1,13 @@
 <template>
   <div
+      id="homepage"
     class="min-h-screen bg-[#f5f7fb] text-slate-950/92 [background:radial-gradient(1200px_600px_at_12%_6%,rgba(245,197,66,0.18),transparent_58%),radial-gradient(900px_520px_at_92%_12%,rgba(245,158,11,0.16),transparent_58%),radial-gradient(820px_520px_at_55%_92%,rgba(154,107,18,0.08),transparent_60%),radial-gradient(600px_360px_at_30%_55%,rgba(255,255,255,0.55),transparent_60%),#f5f7fb]"
   >
     <SiteNavbar />
 
     <main>
       <section
-        class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-5.5 min-[860px]:py-16 min-[860px]:pb-7"
+        class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-5.5 min-[860px]:py-16 min-[860px]:pb-7 w-screen h-screen"
         aria-label="Welcome to RA7 Resort"
       >
         <div
@@ -32,12 +33,12 @@
           <div>
             <p :class="pillClass">
               <span
-                class="h-2.5 w-2.5 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.95),rgba(255,255,255,0.35))] shadow-[0_0_0_4px_rgba(245,197,66,0.18),0_10px_26px_rgba(245,158,11,0.14)]"
-                aria-hidden="true"
-              />
+  class="h-2.5 w-2.5 rounded-full bg-[radial-gradient(circle_at_30%_30%,#4ade80,#16a34a)] shadow-[0_0_0_4px_rgba(74,222,128,0.4),0_0_12px_rgba(22,163,74,0.8)]"
+  aria-hidden="true"
+/>
               Now welcoming guests
             </p>
-            <h1 class="my-0 mb-2.5 mt-3.5 text-[clamp(34px,5vw,56px)] leading-[1.02] tracking-[-0.8px]">
+            <h1 class="my-0 mb-2.5 mt-12 text-[clamp(34px,5vw,56px)] leading-[1.02] tracking-[-0.8px]">
               Your next
               <span
                 class="bg-[linear-gradient(135deg,rgba(245,197,66,1)_0%,rgba(245,158,11,1)_60%,rgba(154,107,18,1)_100%)] bg-clip-text text-transparent"
@@ -51,7 +52,7 @@
               cozy nights. Designed for weekend getaways, family trips, and quiet resets.
             </p>
 
-            <div class="mt-4.5 flex flex-wrap gap-2.5">
+            <div class="mt-25 flex flex-wrap gap-2.5">
               <button :class="[buttonBaseClass, buttonPrimaryClass, buttonLgClass]" type="button" @click="scrollTo('book')">
                 Check availability
               </button>
@@ -76,26 +77,13 @@
             </dl>
           </div>
 
-          <div
-            class="relative h-80 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:right-20 before:top-30 before:h-85 before:w-85 before:rotate-12 before:bg-[radial-gradient(circle_at_30%_30%,rgba(245,197,66,0.24),transparent_62%)] before:content-[''] after:absolute after:bottom-35 after:left-30 after:h-105 after:w-105 after:rotate-[-18deg] after:bg-[radial-gradient(circle_at_30%_30%,rgba(245,158,11,0.18),transparent_64%)] after:content-['']"
-            aria-hidden="true"
-          >
-            <div :class="[heroCardClass, 'left-5.5 top-6 w-[min(320px,72%)]']">
-              <div class="text-xs font-bold text-slate-950/48">Ocean breeze</div>
-              <div class="mt-1.5 font-extrabold tracking-[-0.2px]">All-day calm</div>
-            </div>
-            <div :class="[heroCardClass, 'bottom-6.5 right-5.5 w-[min(260px,68%)]']">
-              <div class="text-xs font-bold text-slate-950/48">Pool & lounge</div>
-              <div class="mt-1.5 font-extrabold tracking-[-0.2px]">Golden hour views</div>
-            </div>
-            <div :class="[heroCardClass, 'bottom-5.5 left-5.5 rounded-full px-3 py-2.5 text-xs font-bold text-slate-950/72']">
-              Free Wi‑Fi • Breakfast • Parking
-            </div>
-          </div>
         </div>
       </section>
 
-      <section id="highlights" class="py-11.5">
+      <div id="highlights" class="mt-8">
+        &nbsp;
+      </div>
+      <section id="" class="py-11.5">
         <div :class="containerClass">
           <div class="mb-4.5 grid gap-2.5">
             <h2 :class="sectionTitleClass">Why guests love RA7</h2>
@@ -112,8 +100,11 @@
         </div>
       </section>
 
+      <div id="stays" class="mt-8">
+        &nbsp;
+      </div>
       <section
-        id="stays"
+        id=""
         class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
         aria-label="Stays and offers"
       >
@@ -174,7 +165,10 @@
         </div>
       </section>
 
-      <section id="amenities" class="py-11.5" aria-label="Amenities">
+      <div id="amenities" class="mt-8">
+        &nbsp;
+      </div>
+      <section id="" class="py-11.5" aria-label="Amenities">
         <div :class="containerClass">
           <div class="mb-4.5 grid gap-2.5">
             <h2 :class="sectionTitleClass">Amenities</h2>
@@ -195,8 +189,11 @@
         </div>
       </section>
 
+      <div id="gallery" class="mt-8">
+        &nbsp;
+      </div>
       <section
-        id="gallery"
+        id=""
         class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
         aria-label="Gallery"
       >
@@ -222,6 +219,9 @@
         </div>
       </section>
 
+      <div id="location" class="mt-8">
+        &nbsp;
+      </div>
       <section id="location" class="py-11.5" aria-label="Location">
         <div :class="[containerClass, 'grid grid-cols-1 items-center gap-3.5 min-[860px]:grid-cols-2 min-[860px]:gap-4.5']">
           <div>
@@ -331,8 +331,6 @@ const pillClass =
   'inline-flex items-center gap-2.5 rounded-full border border-slate-950/10 bg-white/80 px-3 py-2 text-[13px] font-semibold text-slate-950/66'
 const pillSoftClass =
   'inline-flex items-center rounded-full border border-slate-950/9 bg-white/72 px-2.5 py-[7px] text-xs font-semibold text-slate-950/66'
-const heroCardClass =
-  'absolute rounded-4.5 border border-slate-950/12 bg-white/70 p-3.5 backdrop-blur-[10px]'
 const sectionTitleClass = 'm-0 text-[26px] tracking-[-0.4px]'
 const sectionDescClass = 'm-0 max-w-[70ch] text-sm leading-normal text-slate-950/66'
 const iconBoxClass =
