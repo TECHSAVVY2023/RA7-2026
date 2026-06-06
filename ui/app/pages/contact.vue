@@ -2,8 +2,6 @@
   <div
     class="min-h-screen bg-[#f5f7fb] text-slate-950/92 [background:radial-gradient(1200px_600px_at_12%_6%,rgba(245,197,66,0.1),transparent_58%),radial-gradient(900px_520px_at_92%_12%,rgba(245,158,11,0.08),transparent_58%),#f5f7fb]"
   >
-    <SiteNavbar />
-
     <main>
       <section class="px-0 pb-10 pt-20 text-center">
         <div :class="containerClass">
@@ -43,7 +41,7 @@
 
                 <div class="mb-5 flex flex-col gap-2">
                   <label :class="labelClass" for="phone">Phone Number</label>
-                  <input id="phone" v-model="form.contact_number" :class="fieldClass" type="tel" placeholder="+63 900 000 0000">
+                  <input id="phone" v-model="form.contact_number" :class="fieldClass" type="text" @input="enforceElevenDigits" placeholder="0912-3456-789">
                 </div>
 
                 <div class="mb-5 flex flex-col gap-2">
@@ -108,22 +106,37 @@
       </section>
     </main>
 
-    <footer class="border-t border-slate-950/8 bg-white py-10">
-      <div :class="[containerClass, 'flex items-center justify-between']">
-        <div class="flex items-center gap-3">
-          <div :class="brandMarkClass" aria-hidden="true">RA7</div>
-          <div>
-            <div class="font-extrabold">RA7 Resort</div>
-            <div class="text-xs text-slate-950/48">© 2026 • Crafted for calm stays</div>
-          </div>
-        </div>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+
+type Inquiry = {
+  id: number | string
+  firstname: string
+  lastname: string
+  message: string
+  created_at: string
+}
+
+const phoneNumber = ref('')
+
+const enforceElevenDigits = (event: Event) => {
+  const input = event.target as HTMLInputElement
+  
+  // 1. Remove any character that isn't a number
+  let cleaned = input.value.replace(/\D/g, '')
+  
+  // 2. Cut it off strictly at 11 digits
+  if (cleaned.length > 11) {
+    cleaned = cleaned.slice(0, 11)
+  }
+  
+  // 3. Update both the reactive state and the input field
+  phoneNumber.value = cleaned
+  input.value = cleaned
+}
 
 useHead({
   title: 'Contact Us | RA7 Resort',
@@ -132,15 +145,15 @@ useHead({
   ]
 })
 
-const inquiries = ref([])
+const inquiries = ref<Inquiry[]>([])
 const loading = ref(true)
 const isSubmitting = ref(false)
 const successMsg = ref('')
 const errorMsg = ref('')
+const config = useRuntimeConfig()
+const apiBase = String(config.public.apiBase).replace(/\/?$/, '/')
 
 const containerClass = 'mx-auto w-[min(1120px,calc(100%_-_40px))]'
-const brandMarkClass =
-  'grid h-10.5 w-14 place-items-center rounded-[14px] bg-[linear-gradient(135deg,#f5c542,#f59e0b)] font-extrabold text-white shadow-[0_10px_20px_rgba(245,158,11,0.2)]'
 const buttonBaseClass =
   'inline-block cursor-pointer rounded-xl border-0 px-5 py-2.5 text-center font-semibold no-underline transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none'
 const buttonPrimaryClass =
@@ -167,11 +180,12 @@ const form = ref({
 const fetchData = async () => {
   loading.value = true
   try {
-    const response = await fetch(`${config.public.apiBase}contact/list/`)
+    const response = await fetch(`${apiBase}contact/list/`)
     if (!response.ok) throw new Error('Failed to fetch')
     inquiries.value = await response.json()
-  } catch {
+  } catch (err) {
     console.error('Error fetching list:', err)
+    errorMsg.value = 'Unable to load recent inquiries.'
   } finally {
     loading.value = false
   }
@@ -183,7 +197,7 @@ const submitForm = async () => {
   successMsg.value = ''
   
   try {
-    const response = await fetch(`${config.public.apiBase}contact/list/`, {
+    const response = await fetch(`${apiBase}contact/list/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form.value)
@@ -191,7 +205,14 @@ const submitForm = async () => {
     
     if (response.ok) {
       successMsg.value = 'Thank you! Your message was sent successfully.'
-      form.value = { firstname: '', lastname: '', contact_email: '', contact_number: '', message: '' }
+      form.value = {
+        contact_id: 'CID' + Date.now().toString(),
+        firstname: '',
+        lastname: '',
+        contact_email: '',
+        contact_number: '',
+        message: ''
+      }
       fetchData() // Refresh list
     } else {
       errorMsg.value = 'Something went wrong. Please try again.'
