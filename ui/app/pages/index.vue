@@ -5,7 +5,11 @@
   >
 
     <main>
-      <section
+      <Motion
+        as="section"
+        :initial="heroInitial"
+        :animate="heroAnimate"
+        :transition="heroTransition"
         class="relative overflow-hidden border-b border-slate-950/8 py-11 pb-5.5 min-[860px]:py-16 min-[860px]:pb-7 w-screen h-screen"
         aria-label="Welcome to RA7 Resort"
       >
@@ -37,7 +41,13 @@
 />
               Now welcoming guests
             </p>
-            <h1 class="my-0 mb-2.5 mt-12 text-[clamp(34px,5vw,56px)] leading-[1.02] tracking-[-0.8px]">
+            <Motion
+              as="h1"
+              :initial="{ opacity: 0, y: 20 }"
+              :animate="{ opacity: 1, y: 0 }"
+              :transition="{ duration: 0.6, ease: 'easeOut' }"
+              class="my-0 mb-2.5 mt-12 text-[clamp(34px,5vw,56px)] leading-[1.02] tracking-[-0.8px]"
+            >
               Your next
               <span
                 class="bg-[linear-gradient(135deg,rgba(245,197,66,1)_0%,rgba(245,158,11,1)_60%,rgba(154,107,18,1)_100%)] bg-clip-text text-transparent"
@@ -45,7 +55,7 @@
                 sunset escape
               </span>
               starts here.
-            </h1>
+            </Motion>
             <p class="m-0 max-w-[58ch] text-[15px] leading-normal text-slate-950/66">
               RA7 is a modern island resort experience—calm mornings, bright afternoons, and
               cozy nights. Designed for weekend getaways, family trips, and quiet resets.
@@ -61,28 +71,36 @@
             </div>
 
             <dl class="mt-4.5 grid grid-cols-1 gap-2.5 pt-1.5 min-[860px]:grid-cols-3" aria-label="Resort highlights">
-              <div class="rounded-2xl border border-slate-950/10 bg-white/78 p-3">
-                <dt class="m-0 text-xs text-slate-950/48">Best for</dt>
-                <dd class="m-0 mt-1.5 font-bold">Relaxation</dd>
-              </div>
-              <div class="rounded-2xl border border-slate-950/10 bg-white/78 p-3">
-                <dt class="m-0 text-xs text-slate-950/48">Vibe</dt>
-                <dd class="m-0 mt-1.5 font-bold">Tropical modern</dd>
-              </div>
-              <div class="rounded-2xl border border-slate-950/10 bg-white/78 p-3">
-                <dt class="m-0 text-xs text-slate-950/48">Signature</dt>
-                <dd class="m-0 mt-1.5 font-bold">Sunset deck</dd>
-              </div>
+              <Motion
+                v-for="(stat, index) in heroStats"
+                :key="stat.label"
+                as="div"
+                :initial="cardInitial"
+                :animate="cardInView"
+                :transition="staggerTransition(index, 0.32)"
+                class="rounded-2xl border border-slate-950/10 bg-white/78 p-3"
+              >
+                <dt class="m-0 text-xs text-slate-950/48">{{ stat.label }}</dt>
+                <dd class="m-0 mt-1.5 font-bold">{{ stat.value }}</dd>
+              </Motion>
             </dl>
           </div>
 
         </div>
-      </section>
+      </Motion>
 
       <div id="highlights" class="mt-8">
         &nbsp;
       </div>
-      <section id="" class="py-11.5">
+      <Motion
+        id=""
+        as="section"
+        :initial="sectionInitial"
+        :while-in-view="sectionInView"
+        :in-view-options="sectionInViewOptions"
+        :transition="sectionTransition"
+        class="py-11.5"
+      >
         <div :class="containerClass">
           <div class="mb-4.5 grid gap-2.5">
             <h2 :class="sectionTitleClass">Why guests love RA7</h2>
@@ -90,20 +108,34 @@
           </div>
 
           <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-4 min-[860px]:gap-3.5">
-            <article v-for="item in highlights" :key="item.title" class="rounded-4.5 border border-slate-950/10 bg-white/82 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.08)]">
+            <Motion
+              v-for="(item, index) in highlights"
+              :key="item.title"
+              as="article"
+              :initial="cardInitial"
+              :while-in-view="cardInView"
+              :in-view-options="cardInViewOptions"
+              :transition="staggerTransition(index)"
+              class="rounded-4.5 border border-slate-950/10 bg-white/82 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.08)]"
+            >
               <div :class="iconBoxClass" aria-hidden="true">{{ item.icon }}</div>
               <h3 class="my-0 mb-1.5 mt-3 text-base font-bold">{{ item.title }}</h3>
               <p class="m-0 text-sm leading-normal text-slate-950/66">{{ item.text }}</p>
-            </article>
+            </Motion>
           </div>
         </div>
-      </section>
+      </Motion>
 
       <div id="stays" class="mt-8">
         &nbsp;
       </div>
-      <section
+      <Motion
         id=""
+        as="section"
+        :initial="sectionInitial"
+        :while-in-view="sectionInView"
+        :in-view-options="sectionInViewOptions"
+        :transition="sectionTransition"
         class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
         aria-label="Stays and offers"
       >
@@ -132,7 +164,16 @@
           </div>
 
           <div class="grid grid-cols-1 gap-3.5 min-[860px]:grid-cols-3">
-            <article v-for="stay in filteredStays" :key="stay.name" class="overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)]">
+            <Motion
+              v-for="(stay, index) in filteredStays"
+              :key="stay.name"
+              as="article"
+              :initial="cardInitial"
+              :while-in-view="cardInView"
+              :in-view-options="cardInViewOptions"
+              :transition="staggerTransition(index)"
+              class="overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)]"
+            >
               <div
                 class="relative h-37.5 after:absolute after:inset-0 after:bg-[linear-gradient(to_bottom,rgba(245,247,251,0.1),rgba(2,6,23,0.15))] after:content-['']"
                 :style="{ background: stay.tint }"
@@ -159,15 +200,24 @@
                   </button>
                 </div>
               </div>
-            </article>
+            </Motion>
           </div>
         </div>
-      </section>
+      </Motion>
 
       <div id="amenities" class="mt-8">
         &nbsp;
       </div>
-      <section id="" class="py-11.5" aria-label="Amenities">
+      <Motion
+        id=""
+        as="section"
+        :initial="sectionInitial"
+        :while-in-view="sectionInView"
+        :in-view-options="sectionInViewOptions"
+        :transition="sectionTransition"
+        class="py-11.5"
+        aria-label="Amenities"
+      >
         <div :class="containerClass">
           <div class="mb-4.5 grid gap-2.5">
             <h2 :class="sectionTitleClass">Amenities</h2>
@@ -177,22 +227,36 @@
           </div>
 
           <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-3">
-            <div v-for="a in amenities" :key="a.name" class="flex items-start gap-3 rounded-4.5 border border-slate-950/10 bg-white/82 p-3.5">
+            <Motion
+              v-for="(a, index) in amenities"
+              :key="a.name"
+              as="div"
+              :initial="cardInitial"
+              :while-in-view="cardInView"
+              :in-view-options="cardInViewOptions"
+              :transition="staggerTransition(index)"
+              class="flex items-start gap-3 rounded-4.5 border border-slate-950/10 bg-white/82 p-3.5"
+            >
               <div :class="[iconBoxClass, 'shrink-0']" aria-hidden="true">{{ a.icon }}</div>
               <div>
                 <div class="font-extrabold">{{ a.name }}</div>
                 <div class="mt-1 text-sm leading-normal text-slate-950/66">{{ a.desc }}</div>
               </div>
-            </div>
+            </Motion>
           </div>
         </div>
-      </section>
+      </Motion>
 
       <div id="gallery" class="mt-8">
         &nbsp;
       </div>
-      <section
+      <Motion
         id=""
+        as="section"
+        :initial="sectionInitial"
+        :while-in-view="sectionInView"
+        :in-view-options="sectionInViewOptions"
+        :transition="sectionTransition"
         class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
         aria-label="Gallery"
       >
@@ -203,9 +267,14 @@
           </div>
 
           <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-12 min-[860px]:gap-3.5">
-            <div
-              v-for="g in gallery"
+            <Motion
+              v-for="(g, index) in gallery"
               :key="g.title"
+              as="div"
+              :initial="cardInitial"
+              :while-in-view="cardInView"
+              :in-view-options="cardInViewOptions"
+              :transition="staggerTransition(index)"
               class="relative min-h-37.5 overflow-hidden rounded-[22px] border border-slate-950/10 bg-cover bg-center shadow-[0_22px_60px_rgba(2,6,23,0.1)] after:absolute after:inset-0 after:bg-[linear-gradient(to_top,rgba(245,247,251,0.55),rgba(245,247,251,0.08))] after:content-[''] min-[860px]:nth-1:col-span-7 min-[860px]:nth-1:min-h-55 min-[860px]:nth-2:col-span-5 min-[860px]:nth-2:min-h-55 min-[860px]:nth-3:col-span-5 min-[860px]:nth-3:min-h-52.5 min-[860px]:nth-4:col-span-7 min-[860px]:nth-4:min-h-52.5 min-[860px]:nth-5:col-span-12 min-[860px]:nth-5:min-h-55"
               :style="{ backgroundImage: `url(${g.image})` }"
             >
@@ -213,15 +282,24 @@
                 <div class="font-black tracking-[-0.2px]">{{ g.title }}</div>
                 <div class="mt-1 text-[13px] text-slate-950/66">{{ g.text }}</div>
               </div>
-            </div>
+            </Motion>
           </div>
         </div>
-      </section>
+      </Motion>
 
       <div id="location" class="mt-8">
         &nbsp;
       </div>
-      <section id="location" class="py-11.5" aria-label="Location">
+      <Motion
+        id="location"
+        as="section"
+        :initial="sectionInitial"
+        :while-in-view="sectionInView"
+        :in-view-options="sectionInViewOptions"
+        :transition="sectionTransition"
+        class="py-11.5"
+        aria-label="Location"
+      >
         <div :class="[containerClass, 'grid grid-cols-1 items-center gap-3.5 min-[860px]:grid-cols-2 min-[860px]:gap-4.5']">
           <div>
             <h2 :class="sectionTitleClass">Easy to reach, hard to leave</h2>
@@ -257,9 +335,18 @@
             </div>
           </div>
         </div>
-      </section>
+      </Motion>
 
-      <section id="book" class="pb-12.5 pt-8.5" aria-label="Book now">
+      <Motion
+        id="book"
+        as="section"
+        :initial="sectionInitial"
+        :while-in-view="sectionInView"
+        :in-view-options="sectionInViewOptions"
+        :transition="sectionTransition"
+        class="pb-12.5 pt-8.5"
+        aria-label="Book now"
+      >
         <div
           :class="[
             containerClass,
@@ -281,13 +368,15 @@
             </button>
           </div>
         </div>
-      </section>
+      </Motion>
     </main>
 
   </div>
 </template>
 
 <script setup lang="ts">
+import { Motion } from 'motion-v'
+import type { MotionProps } from 'motion-v'
 
 useHead({
   title: 'RA7 Resort',
@@ -303,6 +392,8 @@ useHead({
 type Highlight = { icon: string; title: string; text: string }
 type Amenity = { icon: string; name: string; desc: string }
 type StayTab = 'Popular' | 'Family' | 'Couples'
+type MotionTransition = MotionProps['transition']
+type MotionInViewOptions = NonNullable<MotionProps['inViewOptions']>
 type Stay = {
   name: string
   desc: string
@@ -337,6 +428,29 @@ const segmentedButtonClass =
 const landscapes = Array.from({ length: 16 }, (_, i) => `/images/landscape${i + 1}.jpg`)
 const heroVideoUrl = '/videos/ra7.mp4'
 const heroPosterUrl = landscapes[0]
+const heroInitial = { opacity: 0, y: 28, scale: 0.99 }
+const heroAnimate = { opacity: 1, y: 0, scale: 1 }
+const heroTransition: MotionTransition = { duration: 0.82, ease: [0.22, 1, 0.36, 1] }
+const sectionInitial = { opacity: 0, y: 42, scale: 0.985 }
+const sectionInView = { opacity: 1, y: 0, scale: 1 }
+const sectionTransition: MotionTransition = { duration: 0.68, ease: [0.22, 1, 0.36, 1] }
+const sectionInViewOptions: MotionInViewOptions = { amount: 0.22, margin: '0px 0px -12% 0px', once: false }
+const cardInitial = { opacity: 0, y: 24, scale: 0.97 }
+const cardInView = { opacity: 1, y: 0, scale: 1 }
+const cardInViewOptions: MotionInViewOptions = { amount: 0.18, margin: '0px 0px -8% 0px', once: false }
+const heroStats = [
+  { label: 'Best for', value: 'Relaxation' },
+  { label: 'Vibe', value: 'Tropical modern' },
+  { label: 'Signature', value: 'Sunset deck' },
+]
+
+function staggerTransition(index: number, baseDelay = 0): MotionTransition {
+  return {
+    duration: 0.56,
+    delay: baseDelay + Math.min(index * 0.075, 0.32),
+    ease: [0.22, 1, 0.36, 1],
+  }
+}
 
 const highlights: Highlight[] = [
   { icon: '🌅', title: 'Sunset deck', text: 'Unwind with wide-open sky views and soft evening lights.' },
@@ -446,4 +560,3 @@ function onBookNow() {
   scrollTo('book')
 }
 </script>
-

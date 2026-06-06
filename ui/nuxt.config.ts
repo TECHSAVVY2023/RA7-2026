@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   srcDir: 'app/',
   future: { compatibilityVersion: 4 },
-  modules: ['@nuxt/eslint', '@nuxt/icon'],
+  modules: ['@nuxt/eslint', '@nuxt/icon','motion-v/nuxt'],
   eslint: { config: { standalone: true } },
 
   // Add this section:
