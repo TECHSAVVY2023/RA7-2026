@@ -44,7 +44,7 @@
         <button
           class="relative cursor-pointer overflow-hidden rounded-[14px] border border-amber-500/34 bg-[linear-gradient(135deg,rgba(255,246,197,0.96)_0%,rgba(245,197,66,0.96)_32%,rgba(245,158,11,0.92)_62%,rgba(154,107,18,0.92)_100%)] px-3 py-2.5 text-[13px] font-semibold text-[#291803]/92 shadow-[0_16px_40px_rgba(245,158,11,0.18),0_10px_22px_rgba(245,197,66,0.14)] transition duration-150 after:pointer-events-none after:absolute after:-inset-0.5 after:-translate-x-[140%] after:bg-[linear-gradient(105deg,transparent_0%,rgba(255,255,255,0.55)_42%,transparent_62%)] after:mix-blend-overlay after:transition-transform after:duration-[650ms] hover:-translate-y-px hover:bg-[linear-gradient(135deg,rgba(255,246,197,0.98)_0%,rgba(245,197,66,0.99)_32%,rgba(245,158,11,0.95)_62%,rgba(154,107,18,0.95)_100%)] hover:after:translate-x-[140%] active:translate-y-0 motion-reduce:transition-none motion-reduce:after:transition-none"
           type="button"
-          @click="scrollTo('book')"
+          @click="$router.push('/login')"
         >
           Login
         </button>
@@ -61,9 +61,4 @@ const navLinks = [
   { label: 'Gallery', href: '/#gallery' },
   { label: 'Location', href: '/#location' },
 ]
-
-function scrollTo(id: string) {
-  const el = document.getElementById(id)
-  el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
 </script>
