@@ -34,7 +34,7 @@
           ]"
         >
           <div>
-            <p :class="pillClass">
+            <p :class="[pillClass, 'mt-8 min-[860px]:mt-12']">
               <span
   class="h-2.5 w-2.5 rounded-full bg-[radial-gradient(circle_at_30%_30%,#4ade80,#16a34a)] shadow-[0_0_0_4px_rgba(74,222,128,0.4),0_0_12px_rgba(22,163,74,0.8)]"
   aria-hidden="true"
@@ -61,7 +61,18 @@
               cozy nights. Designed for weekend getaways, family trips, and quiet resets.
             </p>
 
-            <div class="mt-25 flex flex-wrap gap-2.5">
+          </div>
+
+        </div>
+
+        <div
+          :class="[
+            containerClass,
+            'absolute inset-x-0 bottom-16 z-1 grid grid-cols-1 gap-5.5 min-[860px]:bottom-24 min-[860px]:grid-cols-[1.05fr_0.95fr] min-[860px]:gap-6.5',
+          ]"
+        >
+          <div class="flex flex-col gap-3.5">
+            <div class="flex flex-wrap gap-2.5">
               <button :class="[buttonBaseClass, buttonPrimaryClass, buttonLgClass]" type="button" @click="scrollTo('book')">
                 Check availability
               </button>
@@ -70,7 +81,7 @@
               </button>
             </div>
 
-            <dl class="mt-4.5 grid grid-cols-1 gap-2.5 pt-1.5 min-[860px]:grid-cols-3" aria-label="Resort highlights">
+            <dl class="grid grid-cols-1 gap-2.5 min-[860px]:grid-cols-3" aria-label="Resort highlights">
               <Motion
                 v-for="(stat, index) in heroStats"
                 :key="stat.label"
@@ -85,7 +96,6 @@
               </Motion>
             </dl>
           </div>
-
         </div>
       </Motion>
 
