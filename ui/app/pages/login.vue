@@ -4,7 +4,7 @@
     :initial="pageInitial"
     :animate="pageAnimate"
     :transition="pageTransition"
-    class="min-h-screen bg-white lg:flex"
+    class="min-h-dvh bg-white lg:flex"
   >
     <Motion
       as="div"
@@ -131,7 +131,7 @@
       :initial="rightPanelInitial"
       :animate="panelAnimate"
       :transition="panelTransition(0.12)"
-      class="relative w-full lg:w-1/2 bg-white flex min-h-screen flex-col items-center justify-center px-6 py-10 sm:px-8 lg:px-12"
+      class="relative w-full lg:w-1/2 bg-white flex min-h-dvh flex-col items-center justify-start lg:justify-center px-6 pt-16 pb-6 sm:px-8 sm:pt-20 sm:pb-8 lg:px-12 lg:py-10"
     >
       <Motion
         as="div"
@@ -161,12 +161,12 @@
           :initial="riseInitial"
           :animate="riseAnimate"
           :transition="staggerTransition(0)"
-          class="mb-10 text-center"
+          class="mb-4 sm:mb-8 lg:mb-10 text-center"
         >
-         
-          <p class="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">RA7 Resort</p>
-          <h1 class="text-4xl font-bold text-slate-900 mb-3">Welcome!</h1>
-          <p class="text-slate-600 text-lg">Sign in to access exclusive offers</p>
+
+          <p class="mb-1 sm:mb-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">RA7 Resort</p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-2 sm:mb-3">Welcome!</h1>
+          <p class="text-slate-600 text-base sm:text-lg">Sign in to access exclusive offers</p>
         </Motion>
 
         <Motion
@@ -174,7 +174,7 @@
           :initial="riseInitial"
           :animate="riseAnimate"
           :transition="staggerTransition(1)"
-          class="space-y-6"
+          class="space-y-4 sm:space-y-6"
         >
           <Motion
             v-if="error" 
@@ -233,7 +233,7 @@
             </button>
           </Motion>
 
-          <Motion as="div" :initial="fadeInitial" :animate="fadeAnimate" :transition="staggerTransition(3)" class="relative py-6">
+          <Motion as="div" :initial="fadeInitial" :animate="fadeAnimate" :transition="staggerTransition(3)" class="relative py-3 sm:py-6">
             <div class="absolute inset-0 flex items-center">
               <div class="w-full border-t border-slate-200"></div>
             </div>
@@ -242,7 +242,7 @@
             </div>
           </Motion>
 
-          <Motion as="div" :initial="riseInitial" :animate="riseAnimate" :transition="staggerTransition(4)" class="space-y-3">
+          <Motion as="div" :initial="riseInitial" :animate="riseAnimate" :transition="staggerTransition(4)" class="space-y-2 sm:space-y-3">
             <Motion
               v-for="(benefit, index) in loginBenefits"
               :key="benefit"
@@ -261,7 +261,7 @@
             </Motion>
           </Motion>
 
-          <Motion as="p" :initial="fadeInitial" :animate="fadeAnimate" :transition="staggerTransition(5)" class="text-center text-xs text-slate-500 leading-relaxed pt-4">
+          <Motion as="p" :initial="fadeInitial" :animate="fadeAnimate" :transition="staggerTransition(5)" class="text-center text-xs text-slate-500 leading-relaxed pt-2 sm:pt-4">
             By signing in, you agree to our
             <NuxtLink to="/terms" class="text-amber-600 hover:text-amber-700 font-semibold">
               Terms
@@ -273,18 +273,19 @@
           </Motion>
         </Motion>
 
-        <Motion
-          as="div"
-          :initial="fadeInitial"
-          :animate="fadeAnimate"
-          :transition="staggerTransition(6)"
-          class="mt-12 pt-8 border-t border-slate-100 text-center"
-        >
-          <p class="text-sm text-slate-500">
-            <span class="font-semibold text-slate-700">RA7 Resort</span> • Luxury Redefined
-          </p>
-          <p class="text-xs text-slate-400 mt-2">© 2026 RA7 Resort. All rights reserved.</p>
-        </Motion>
+      </Motion>
+
+      <Motion
+        as="div"
+        :initial="fadeInitial"
+        :animate="fadeAnimate"
+        :transition="staggerTransition(6)"
+        class="w-full max-w-md mt-auto pt-4 sm:pt-6 lg:pt-8 border-t border-slate-100 text-center"
+      >
+        <p class="text-xs sm:text-sm text-slate-500">
+          <span class="font-semibold text-slate-700">RA7 Resort</span> • Luxury Redefined
+        </p>
+        <p class="text-xs text-slate-400 mt-1 sm:mt-2">© 2026 RA7 Resort. All rights reserved.</p>
       </Motion>
     </Motion>
   </Motion>
