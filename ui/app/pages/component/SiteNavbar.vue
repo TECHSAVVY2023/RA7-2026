@@ -30,6 +30,41 @@
       </nav>
 
       <div class="flex items-center justify-start gap-2.5 min-[860px]:justify-end">
+        <div class="relative min-[860px]:hidden">
+          <button
+            class="inline-flex items-center gap-1.5 cursor-pointer rounded-[14px] border border-white/92 bg-transparent px-3 py-2.5 text-[13px] font-semibold text-slate-950/92 transition duration-150 hover:-translate-y-px hover:border-white/98 hover:bg-white/95 active:translate-y-0 motion-reduce:transition-none"
+            type="button"
+            :aria-expanded="isGuideOpen"
+            aria-haspopup="true"
+            aria-controls="accommodation-guide-menu"
+            @click="isGuideOpen = !isGuideOpen"
+          >
+            <Icon name="lucide:map" class="w-3.5 h-3.5 stroke-[2.5]" />
+            Accommodation Guide
+            <Icon
+              name="lucide:chevron-down"
+              class="w-3.5 h-3.5 stroke-[2.5] transition-transform duration-150"
+              :class="{ 'rotate-180': isGuideOpen }"
+            />
+          </button>
+          <div
+            v-if="isGuideOpen"
+            id="accommodation-guide-menu"
+            class="absolute left-0 top-full z-20 mt-2 flex min-w-50 flex-col gap-1 rounded-[14px] border border-slate-950/8 bg-white/95 p-2 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-[14px]"
+            role="menu"
+          >
+            <a
+              v-for="link in navLinks"
+              :key="link.href"
+              class="rounded-xl px-2.5 py-2 text-[13px] text-black no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
+              :href="link.href"
+              role="menuitem"
+              @click="isGuideOpen = false"
+            >
+              {{ link.label }}
+            </a>
+          </div>
+        </div>
         <router-link to="/contact" custom v-slot="{ navigate }">
           <button
             class="inline-flex items-center gap-1.5 cursor-pointer rounded-[14px] border border-white/92 bg-transparent px-3 py-2.5 text-[13px] font-semibold text-slate-950/92 transition duration-150 hover:-translate-y-px hover:border-white/98 hover:bg-white/95 active:translate-y-0 motion-reduce:transition-none"
@@ -61,4 +96,6 @@ const navLinks = [
   { label: 'Gallery', href: '/#gallery' },
   { label: 'Location', href: '/#location' },
 ]
+
+const isGuideOpen = ref(false)
 </script>
