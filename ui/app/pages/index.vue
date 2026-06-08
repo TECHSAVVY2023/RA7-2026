@@ -267,7 +267,7 @@
         :while-in-view="sectionInView"
         :in-view-options="sectionInViewOptions"
         :transition="sectionTransition"
-        class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.42))] py-11.5"
+        class="border-y border-slate-950/8 bg-[linear-gradient(180deg,rgba(255, 255, 255, 0.21),rgba(255, 255, 255, 0.23))] py-11.5"
         aria-label="Gallery"
       >
         <div :class="containerClass">
@@ -285,11 +285,23 @@
               :while-in-view="cardInView"
               :in-view-options="cardInViewOptions"
               :transition="staggerTransition(index)"
-              class="relative min-h-37.5 overflow-hidden rounded-[22px] border border-slate-950/10 bg-cover bg-center shadow-[0_22px_60px_rgba(2,6,23,0.1)] after:absolute after:inset-0 after:bg-[linear-gradient(to_top,rgba(245,247,251,0.55),rgba(245,247,251,0.08))] after:content-[''] min-[860px]:nth-1:col-span-7 min-[860px]:nth-1:min-h-55 min-[860px]:nth-2:col-span-5 min-[860px]:nth-2:min-h-55 min-[860px]:nth-3:col-span-5 min-[860px]:nth-3:min-h-52.5 min-[860px]:nth-4:col-span-7 min-[860px]:nth-4:min-h-52.5 min-[860px]:nth-5:col-span-12 min-[860px]:nth-5:min-h-55"
+              class="relative min-h-37.5 overflow-hidden rounded-[22px] border border-white bg-cover bg-center shadow-[0_22px_60px_rgba(2,6,23,0.1)] after:absolute after:inset-0 after:bg-[linear-gradient(to_top,rgba(245,247,251,0.55),rgba(245,247,251,0.08))] after:content-[''] min-[860px]:nth-1:col-span-7 min-[860px]:nth-1:min-h-55 min-[860px]:nth-2:col-span-5 min-[860px]:nth-2:min-h-55 min-[860px]:nth-3:col-span-5 min-[860px]:nth-3:min-h-52.5 min-[860px]:nth-4:col-span-7 min-[860px]:nth-4:min-h-52.5 min-[860px]:nth-5:col-span-12 min-[860px]:nth-5:min-h-55"
               :style="{ backgroundImage: `url(${g.image})` }"
             >
-              <div class="absolute inset-x-3.5 bottom-3.5 z-1 rounded-2xl border border-slate-950/8 bg-white/72 p-3 backdrop-blur-sm">
-                <div class="font-black tracking-[-0.2px]">{{ g.title }}</div>
+              <div class="absolute inset-x-3.5 bottom-3.5 z-1 rounded-2xl border border-slate-950/8 bg-white/75 p-3 backdrop-trans-sm">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="font-black tracking-[-0.2px]">{{ g.title }}</div>
+                  <NuxtLink
+                    :to="`/${g.slug}`"
+                    class="inline-flex items-center gap-1 rounded-full border border-slate-950/10 bg-white/80 px-2 py-0.5 text-[11px] font-normal text-slate-950/72 transition-colors duration-150 hover:bg-white/95 hover:text-slate-950/92 motion-reduce:transition-none"
+                  >
+                    explore
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3" aria-hidden="true">
+                      <path d="M5 12h14" />
+                      <path d="m13 5 7 7-7 7" />
+                    </svg>
+                  </NuxtLink>
+                </div>
                 <div class="mt-1 text-[13px] text-slate-950/66">{{ g.text }}</div>
               </div>
             </Motion>
@@ -553,11 +565,11 @@ const stays: Stay[] = [
 const filteredStays = computed(() => stays.filter((s) => s.tab === selectedStayTab.value))
 
 const gallery = [
-  { title: 'Lobby & welcome', text: 'Clean lines and warm textures.', image: landscapes[1] },
-  { title: 'Pool at dusk', text: 'Soft light and calm water.', image: landscapes[2] },
-  { title: 'Room comfort', text: 'Rest-forward design details.', image: landscapes[3] },
-  { title: 'Dining corner', text: 'Fresh plates, easy mornings.', image: landscapes[4] },
-  { title: 'Sunset deck', text: 'The signature RA7 view.', image: landscapes[5] },
+  { slug: 'lobby', title: 'Lobby & welcome', text: 'Clean lines and warm textures.', image: landscapes[14] },
+  { slug: 'poolAtDusk', title: 'Pool at dusk', text: 'Soft light and calm water.', image: landscapes[5] },
+  { slug: 'roomComfort', title: 'Room comfort', text: 'Rest-forward design details.', image: landscapes[4] },
+  { slug: 'diningCorner', title: 'Dining corner', text: 'Fresh plates, easy mornings.', image: landscapes[6] },
+  { slug: 'sunsetDeck', title: 'Sunset deck', text: 'The signature RA7 view.', image: landscapes[11] },
 ]
 
 function scrollTo(id: string) {
