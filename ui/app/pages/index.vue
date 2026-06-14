@@ -14,7 +14,7 @@
         aria-label="Welcome to RA7 Resort"
       >
         <div
-          class="absolute inset-0 saturate-[1.08] contrast-[1.05] after:absolute after:inset-0 after:bg-[linear-gradient(180deg,rgba(245,247,251,0.38)_0%,rgba(245,247,251,0.58)_46%,rgba(245,247,251,0.86)_100%),radial-gradient(900px_500px_at_80%_10%,rgba(245,197,66,0.2),transparent_60%),radial-gradient(900px_520px_at_22%_0%,rgba(245,158,11,0.16),transparent_62%),radial-gradient(700px_420px_at_50%_60%,rgba(255,255,255,0.45),transparent_62%)] after:content-['']"
+          class="absolute inset-0 saturate-[1.08] contrast-[1.05] after:absolute after:inset-0 after:bg-[linear-gradient(180deg,rgba(245,247,251,0.1)_0%,rgba(245,247,251,0.2)_46%,rgba(245,247,251,0.42)_100%),radial-gradient(900px_500px_at_80%_10%,rgba(245,197,66,0.08),transparent_60%),radial-gradient(900px_520px_at_22%_0%,rgba(245,158,11,0.07),transparent_62%),radial-gradient(700px_420px_at_50%_60%,rgba(255,255,255,0.16),transparent_62%)] after:content-['']"
           aria-hidden="true"
         >
           <video
@@ -56,7 +56,7 @@
               </span>
               starts here.
             </Motion>
-            <p class="m-0 max-w-[58ch] text-[15px] leading-normal text-slate-950/66">
+            <p class="m-0 max-w-[58ch] rounded-2xl bg-white/30 px-3.5 py-2.5 text-[15px] leading-normal text-slate-950/88 shadow-[0_12px_32px_rgba(2,6,23,0.14)] backdrop-blur-[6px]">
               RA7 is a modern island resort experience—calm mornings, bright afternoons, and
               cozy nights. Designed for weekend getaways, family trips, and quiet resets.
             </p>
