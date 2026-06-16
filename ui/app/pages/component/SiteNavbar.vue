@@ -22,7 +22,8 @@
         <a
           v-for="link in navLinks"
           :key="link.href"
-          class="rounded-xl px-2.5 py-2 text-[13px] text-black no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
+          class="text-center rounded-xl border px-2.5 py-2 text-[13px] text-black no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
+          :class="link.label === 'Stays' ? 'border-teal-500/60 bg-teal-100 font-semibold w-20 shadow-[0_8px_18px_rgba(11, 245, 202, 0.14)]' : 'border-transparent'"
           :href="link.href"
         >
           {{ link.label }}
@@ -56,7 +57,8 @@
             <a
               v-for="link in navLinks"
               :key="link.href"
-              class="rounded-xl px-2.5 py-2 text-[13px] text-black no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
+              class="rounded-xl border px-2.5 py-2 text-[13px] text-black no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
+              :class="link.label === 'Stays' ? 'border-teal-500/6 bg-teal-100 font-semibold shadow-[0_8px_18px_rgba(11, 245, 144, 0.14)]' : 'border-transparent'"
               :href="link.href"
               role="menuitem"
               @click="isGuideOpen = false"
