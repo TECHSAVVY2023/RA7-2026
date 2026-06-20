@@ -68,6 +68,8 @@
 </template>
 
 <script setup lang="ts">
+import { Motion } from 'motion-v'
+import type { MotionProps } from 'motion-v'
 
 useHead({
   title: 'Lobby & welcome | RA7 Resort',
@@ -76,11 +78,23 @@ useHead({
   ]
 })
 
+type MotionTransition = MotionProps['transition']
+type MotionInViewOptions = NonNullable<MotionProps['inViewOptions']>
+
 const containerClass = 'mx-auto w-[min(1120px,calc(100%_-_40px))]'
 
-const sectionInitial = { opacity: 0, y: 50 }
-const sectionInView = { opacity: 1, y: 0 }
-const sectionTransition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+const sectionInitial = { opacity: 0, y: 42, scale: 0.985 }
+const sectionInView = { opacity: 1, y: 0, scale: 1 }
+const sectionTransition: MotionTransition = { duration: 0.68, ease: [0.22, 1, 0.36, 1] }
+const sectionInViewOptions: MotionInViewOptions = { amount: 0.22, margin: '0px 0px -12% 0px', once: false }
+
+function staggerTransition(index: number, baseDelay = 0): MotionTransition {
+  return {
+    duration: 0.56,
+    delay: baseDelay + Math.min(index * 0.075, 0.32),
+    ease: [0.22, 1, 0.36, 1],
+  }
+}
 
 const galleryItems = [
   {
