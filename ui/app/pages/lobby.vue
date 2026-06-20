@@ -17,9 +17,19 @@
               Explore the lobby in a rich gallery of arrival moments, welcome details, and cozy lounge scenes.
             </p>
           </div>
-
+         
           <div class="mt-10 grid gap-6 grid-cols-1">
-            <article v-for="item in galleryItems" :key="item.title" class="group overflow-hidden rounded-[28px] border border-slate-950/10 bg-white/90 shadow-sm transition hover:shadow-md">
+
+            <Motion 
+              v-for="item in galleryItems" 
+              :key="item.title"
+              as="article"
+              :initial="sectionInitial"
+              :while-in-view="sectionInView"
+              :in-view-options="{ once: false, amount: 0.2 }"
+              :transition="sectionTransition"
+              class="group overflow-hidden rounded-[28px] border border-slate-950/10 bg-white/90 shadow-sm transition hover:shadow-md"
+            >
               <div class="relative h-[300px] sm:h-[360px] lg:h-[420px] bg-slate-100 rounded-t-[14px] overflow-hidden border-b border-slate-950/8">
                 <img :src="item.image" :alt="item.title" class="block w-full h-full object-cover object-center transition duration-300 group-hover:scale-105" />
               </div>
@@ -28,10 +38,18 @@
                 <h2 class="mt-3 text-lg font-semibold text-slate-950">{{ item.title }}</h2>
                 <p class="mt-2 text-sm leading-6 text-slate-700">{{ item.desc }}</p>
               </div>
-            </article>
+            </Motion>
           </div>
 
-          <div class="mt-10 flex flex-col gap-4 rounded-3xl border border-slate-950/10 bg-gradient-to-r from-amber-50 via-white to-orange-50 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <Motion
+            as="div"
+            :initial="sectionInitial"
+            :while-in-view="sectionInView"
+            :in-view-options="{ once: false, amount: 0.3 }"
+            :transition="sectionTransition"
+            class="mt-10 flex flex-col gap-4 rounded-3xl border border-slate-950/10 bg-gradient-to-r from-amber-50 via-white to-orange-50 p-6 sm:flex-row sm:items-center sm:justify-between"
+          >
+          
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">Lobby highlights</p>
               <p class="mt-2 text-base text-slate-900">A warm welcome, curated lounge areas, and a calm arrival atmosphere.</p>
@@ -42,7 +60,7 @@
             >
               Return home
             </NuxtLink>
-          </div>
+          </Motion>
         </section>
       </div>
     </main>
@@ -50,6 +68,7 @@
 </template>
 
 <script setup lang="ts">
+
 useHead({
   title: 'Lobby & welcome | RA7 Resort',
   meta: [
@@ -58,6 +77,10 @@ useHead({
 })
 
 const containerClass = 'mx-auto w-[min(1120px,calc(100%_-_40px))]'
+
+const sectionInitial = { opacity: 0, y: 50 }
+const sectionInView = { opacity: 1, y: 0 }
+const sectionTransition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
 
 const galleryItems = [
   {
