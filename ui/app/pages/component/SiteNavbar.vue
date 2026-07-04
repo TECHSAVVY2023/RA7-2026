@@ -8,9 +8,9 @@
       <div class="flex min-w-60 items-center gap-3" aria-label="RA7 Resort">
         <NuxtLink
           to="/#home"
-          class="grid h-[42px] w-14 place-items-center rounded-[14px] bg-[linear-gradient(135deg,rgba(255,246,197,0.92)_0%,rgba(245,197,66,0.98)_38%,rgba(245,158,11,0.92)_68%,rgba(154,107,18,0.92)_100%)] font-extrabold tracking-[0.5px] text-white/95 shadow-[0_12px_26px_rgba(245,158,11,0.22),0_8px_18px_rgba(245,197,66,0.18)] cursor-pointer transition duration-150 hover:brightness-105"
+          class="grid place-items-center rounded-[14px] bg-[linear-gradient(135deg,rgba(255,246,197,0.92)_0%,rgba(245,197,66,0.98)_38%,rgba(245,158,11,0.92)_68%,rgba(154,107,18,0.92)_100%)] font-extrabold tracking-[0.5px] text-white/95 shadow-[0_12px_26px_rgba(245,158,11,0.22),0_8px_18px_rgba(245,197,66,0.18)] cursor-pointer transition duration-150 hover:brightness-105"
         >
-          RA7
+          <img src="/ra7-logo-removebg.png" alt="RA7 Resort Logo" class="w-20 h-20 rounded-full object-cover" />
         </NuxtLink>
         <div>
           <div class="font-bold tracking-[0.2px] text-slate-950/92">RA7 Resort</div>
@@ -23,7 +23,7 @@
           v-for="link in navLinks"
           :key="link.href"
           class="text-center rounded-xl border px-2.5 py-2 text-[13px] text-black no-underline transition-colors duration-200 hover:bg-slate-950/4 hover:text-slate-950/92 motion-reduce:transition-none"
-          :class="link.label === 'Stays' ? 'border-teal-500/60 bg-teal-100 font-semibold w-20 shadow-[0_8px_18px_rgba(11, 245, 202, 0.14)]' : 'border-transparent'"
+          :class="link.label === 'Stays' ? ' border-white  font-semibold w-20 shadow-[0_8px_18px_rgba(11, 245, 202, 0.14)]' : 'border-transparent'"
           :href="link.href"
         >
           {{ link.label }}
@@ -73,13 +73,13 @@
             type="button"
             @click="navigate"
           >
-            <Icon name="lucide:phone" class="w-3.5 h-3.5 stroke-[2.5]" />
+            <Icon name="lucide:phone-call" class="w-3.5 h-3.5 stroke-[2.5]" />
             
             Contact
           </button>
         </router-link>
         <button
-          class="relative cursor-pointer overflow-hidden rounded-[14px] border border-amber-500/34 bg-[linear-gradient(135deg,rgba(255,246,197,0.96)_0%,rgba(245,197,66,0.96)_32%,rgba(245,158,11,0.92)_62%,rgba(154,107,18,0.92)_100%)] px-3 py-2.5 text-[13px] font-semibold text-[#291803]/92 shadow-[0_16px_40px_rgba(245,158,11,0.18),0_10px_22px_rgba(245,197,66,0.14)] transition duration-150 after:pointer-events-none after:absolute after:-inset-0.5 after:-translate-x-[140%] after:bg-[linear-gradient(105deg,transparent_0%,rgba(255,255,255,0.55)_42%,transparent_62%)] after:mix-blend-overlay after:transition-transform after:duration-[650ms] hover:-translate-y-px hover:bg-[linear-gradient(135deg,rgba(255,246,197,0.98)_0%,rgba(245,197,66,0.99)_32%,rgba(245,158,11,0.95)_62%,rgba(154,107,18,0.95)_100%)] hover:after:translate-x-[140%] active:translate-y-0 motion-reduce:transition-none motion-reduce:after:transition-none"
+          class="relative cursor-pointer overflow-hidden rounded-[14px] border border-white bg-[linear-gradient(135deg,rgba(255,246,197,0.96)_0%,rgba(245,197,66,0.96)_32%,rgba(245,158,11,0.92)_62%,rgba(154,107,18,0.92)_100%)] px-3 py-2.5 text-[13px] font-semibold text-[#291803]/92 shadow-[0_16px_40px_rgba(245,158,11,0.18),0_10px_22px_rgba(245,197,66,0.14)] transition duration-150 after:pointer-events-none after:absolute after:-inset-0.5 after:-translate-x-[140%] after:bg-[linear-gradient(105deg,transparent_0%,rgba(255,255,255,0.55)_42%,transparent_62%)] after:mix-blend-overlay after:transition-transform after:duration-[650ms] hover:-translate-y-px hover:bg-[linear-gradient(135deg,rgba(255,246,197,0.98)_0%,rgba(245,197,66,0.99)_32%,rgba(245,158,11,0.95)_62%,rgba(154,107,18,0.95)_100%)] hover:after:translate-x-[140%] active:translate-y-0 motion-reduce:transition-none motion-reduce:after:transition-none"
           type="button"
           @click="$router.push('/login')"
         >

@@ -2,9 +2,9 @@
   <footer class="border-t border-[rgba(2,6,23,0.08)] bg-white/55 pt-5 pb-7">
    
 
-  <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 gap-10"> 
+  <div class="mx-auto grid w-[min(1120px,calc(100%_-_40px))] grid-cols-1 gap-3.5 py-3.5 min-[860px]:grid-cols-[1fr_auto_1fr] min-[860px]:items-center grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 gap-10"> 
   <div>
-    <div class="flex items-center gap-3 ml-18">
+    <div class="flex items-center gap-3">
       
         <div class="flex flex-col items-start">
           <img src="/ra7-logo-removebg.png" alt="RA7 Resort Logo" class="w-40 h-40 rounded-full object-cover" />
@@ -55,8 +55,4 @@
 
   </footer>
 </template>
-
-<script setup lang="ts">
-const year = new Date().getFullYear()
-</script>
 
