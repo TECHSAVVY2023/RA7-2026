@@ -145,7 +145,7 @@
           class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-700 hover:shadow-md"
           aria-label="Return to home page"
         >
-          <Icon name="lucide:arrow-left" class="h-4 w-4" aria-hidden="true" />
+          <Icon name="lucide:home" class="h-4 w-4" aria-hidden="true" />
           <span>Home</span>
         </NuxtLink>
       </Motion>
@@ -205,8 +205,8 @@
               type="button"
               class="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 p-px transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              <div class="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div class="relative flex items-center justify-center gap-3 px-6 py-4 bg-white group-hover:bg-transparent transition-colors duration-300">
+              <div class="absolute inset-0 bg-linear-to-r from-amber-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="relative flex items-center justify-center gap-3 px-6 py-4 bg-amber-500 group-hover:bg-transparent transition-colors duration-300">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -225,7 +225,7 @@
                     fill="#EA4335"
                   />
                 </svg>
-                <span class="font-semibold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent group-hover:text-white transition-colors duration-300">
+                <span class="font-semibold bg-linear-to-r text-white bg-clip-text text-transparent group-hover:text-white transition-colors duration-300">
                   <span v-if="isLoading">✨ Signing in...</span>
                   <span v-else>Continue with Google</span>
                 </span>

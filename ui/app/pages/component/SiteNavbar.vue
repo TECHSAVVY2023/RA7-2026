@@ -73,7 +73,7 @@
             type="button"
             @click="navigate"
           >
-            <Icon name="lucide:phone-call" class="w-3.5 h-3.5 stroke-[2.5]" />
+            <Icon name="lucide:phone" class="w-3.5 h-3.5 stroke-[2.5]" />
             
             Contact
           </button>
