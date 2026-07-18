@@ -52,7 +52,7 @@
               <span
                 class="bg-[linear-gradient(135deg,rgba(245,197,66,1)_0%,rgba(245,158,11,1)_60%,rgba(154,107,18,1)_100%)] bg-clip-text text-transparent"
               >
-                sunset escape
+                sunrise escape
               </span>
               starts here.
             </Motion>
@@ -153,15 +153,15 @@
           <div class="mb-4.5 grid items-end gap-2.5 min-[860px]:grid-cols-[1fr_auto]">
             <div>
               <h2 :class="sectionTitleClass">Stays that fit your mood</h2>
-              <p :class="sectionDescClass">Pick a room type, then tailor the experience with add-ons and activities.</p>
+              <p :class="sectionDescClass"><strong>Super Deluxe</strong>—Premium comfort with premium views. <strong>Deluxe</strong>—Great value with all essentials. <strong>Standard</strong>—Cozy retreats for intimate stays.</p>
             </div>
-            <div class="grid grid-cols-3 gap-2 rounded-4.5 border border-slate-950/10 bg-white/78 p-2" role="tablist" aria-label="Stay categories">
+            <div class="flex flex-wrap items-center justify-center gap-3 rounded-4xl bg-[linear-gradient(135deg,rgba(255,246,197,0.72)_0%,rgba(245,197,66,0.68)_40%,rgba(245,158,11,0.64)_100%)] backdrop-blur-md p-4 shadow-[0_20px_50px_rgba(245,158,11,0.25),inset_0_1px_0_rgba(255,255,255,0.5)]" role="tablist" aria-label="Stay categories">
               <button
                 v-for="tab in stayTabs"
                 :key="tab"
                 :class="[
                   segmentedButtonClass,
-                  selectedStayTab === tab ? 'border-slate-950/12 bg-slate-950/4 text-slate-950/92' : 'border-transparent bg-transparent text-slate-950/66',
+                  selectedStayTab === tab ? 'border-2 border-white/80 bg-white/95 text-amber-900 shadow-[0_12px_32px_rgba(2,6,23,0.18),inset_0_1px_2px_rgba(255,255,255,0.8)]' : 'border border-white/40 bg-white/32 text-amber-900/72 hover:bg-white/45 hover:border-white/60',
                 ]"
                 type="button"
                 role="tab"
@@ -431,7 +431,7 @@ useHead({
 
 type Highlight = { icon: string; title: string; text: string }
 type Amenity = { icon: string; name: string; desc: string }
-type StayTab = 'Popular' | 'Family' | 'Couples'
+type StayTab = 'Super Deluxe' | 'Deluxe' | 'Standard' | 'Pavilions'
 type MotionTransition = MotionProps['transition']
 type MotionInViewOptions = NonNullable<MotionProps['inViewOptions']>
 type Stay = {
@@ -463,7 +463,7 @@ const sectionDescClass = 'm-0 max-w-[70ch] text-sm leading-normal text-slate-950
 const iconBoxClass =
   'grid h-10 w-10 place-items-center rounded-[14px] border border-slate-950/8 bg-slate-950/3 text-lg'
 const segmentedButtonClass =
-  'cursor-pointer rounded-[14px] border px-2.5 py-2.5 text-[13px] font-bold transition-colors duration-150 motion-reduce:transition-none'
+  'cursor-pointer rounded-full px-4.5 py-2.5 text-sm font-bold transition-all duration-200 motion-reduce:transition-none whitespace-nowrap'
 
 const landscapes = Array.from({ length: 16 }, (_, i) => `/images/landscape${i + 1}.jpg`)
 const heroVideoUrl = '/videos/ra7.mp4'
@@ -480,8 +480,8 @@ const cardInView = { opacity: 1, y: 0, scale: 1 }
 const cardInViewOptions: MotionInViewOptions = { amount: 0.18, margin: '0px 0px -8% 0px', once: false }
 const heroStats = [
   { label: 'Best for', value: 'Relaxation' },
-  { label: 'Vibe', value: 'Tropical modern' },
-  { label: 'Signature', value: 'Sunset deck' },
+  { label: 'Vibe', value: 'Screen-Flash Pool' },
+  { label: 'Signature', value: 'Sunrise Deck' },
 ]
 
 function staggerTransition(index: number, baseDelay = 0): MotionTransition {
@@ -493,9 +493,9 @@ function staggerTransition(index: number, baseDelay = 0): MotionTransition {
 }
 
 const highlights: Highlight[] = [
-  { icon: '🌅', title: 'Sunset deck', text: 'Unwind with wide-open sky views and soft evening lights.' },
+  { icon: '🌅', title: 'Sunrise deck', text: 'Experience the perfect balance of island life—where vibrant morning skies seamlessly fade into soft evening lights under a wide-open canopy.' },
   { icon: '🏝️', title: 'Quiet shoreline', text: 'A calmer stretch for slow walks, morning swims, and shade.' },
-  { icon: '🍽️', title: 'All-day dining', text: 'Fresh, simple favorites—perfect after beach time or pool time.' },
+  { icon: '🍽️', title: 'Complimentary Breakfast for Deluxe Rooms', text: 'Fresh, simple morning favorites—perfectly paired with your sunrise escape.' },
   { icon: '🛏️', title: 'Rest-first rooms', text: 'Cool tones, comfy beds, and thoughtful space for your things.' },
 ]
 
@@ -508,8 +508,8 @@ const amenities: Amenity[] = [
   { icon: '🛶', name: 'Activities', desc: 'Light adventures—water, sand, and nearby nature.' },
 ]
 
-const stayTabs: StayTab[] = ['Popular', 'Family', 'Couples']
-const selectedStayTab = ref<StayTab>('Popular')
+const stayTabs: StayTab[] = ['Super Deluxe', 'Deluxe', 'Standard', 'Pavilions']
+const selectedStayTab = ref<StayTab>('Super Deluxe')
 
 const stays: Stay[] = [
   {
@@ -520,7 +520,7 @@ const stays: Stay[] = [
     beds: '1 queen',
     view: 'Garden view',
     price: '₱0,000',
-    tab: 'Popular',
+    tab: 'Super Deluxe',
     tint: "url('/images/landscape5.jpg') center / cover no-repeat",
   },
   {
@@ -531,7 +531,7 @@ const stays: Stay[] = [
     beds: '1 king',
     view: 'Pool view',
     price: '₱0,000',
-    tab: 'Popular',
+    tab: 'Super Deluxe',
     tint: "url('/images/landscape10.jpg') center / cover no-repeat",
   },
   {
@@ -542,7 +542,7 @@ const stays: Stay[] = [
     beds: '2 double',
     view: 'Courtyard view',
     price: '0,000',
-    tab: 'Family',
+    tab: 'Deluxe',
     tint: "url('/images/landscape8.jpg') center / cover no-repeat",
   },
   {
@@ -553,7 +553,7 @@ const stays: Stay[] = [
     beds: '3 double',
     view: 'Resort view',
     price: '₱0,000',
-    tab: 'Family',
+    tab: 'Deluxe',
     tint: "url('/images/landscape8.jpg') center / cover no-repeat",
   },
   {
@@ -564,7 +564,7 @@ const stays: Stay[] = [
     beds: '1 king',
     view: 'Sunset view',
     price: '₱0,000',
-    tab: 'Couples',
+    tab: 'Standard',
     tint: "url('/images/landscape8.jpg') center / cover no-repeat",
   },
   {
@@ -575,8 +575,41 @@ const stays: Stay[] = [
     beds: '1 queen',
     view: 'Nature view',
     price: '₱0,000',
-    tab: 'Couples',
+    tab: 'Standard',
     tint: "url('/images/landscape8.jpg') center / cover no-repeat",
+  },
+  {
+    name: 'Garden Cottage',
+    desc: 'Charming standalone cottage with private entrance, perfect for families or small groups seeking privacy.',
+    badge: 'Cottage',
+    guests: '4 guests',
+    beds: '2 bedrooms',
+    view: 'Garden view',
+    price: '₱0,000',
+    tab: 'Pavilions',
+    tint: "url('/images/landscape9.jpg') center / cover no-repeat",
+  },
+  {
+    name: 'Beachfront Cottage',
+    desc: 'Exclusive beachside cottage with direct sand access, ideal for romantic escapes or close-knit retreats.',
+    badge: 'Beachfront',
+    guests: '4 guests',
+    beds: '2 bedrooms',
+    view: 'Beach view',
+    price: '₱0,000',
+    tab: 'Pavilions',
+    tint: "url('/images/landscape12.jpg') center / cover no-repeat",
+  },
+  {
+    name: 'Function Hall',
+    desc: 'Versatile event space with flexible layout, catering kitchen, and outdoor terrace for celebrations and gatherings.',
+    badge: 'Events',
+    guests: 'Up to 150 guests',
+    beds: 'Flexible setup',
+    view: 'Resort view',
+    price: 'Custom pricing',
+    tab: 'Pavilions',
+    tint: "url('/images/landscape13.jpg') center / cover no-repeat",
   },
 ]
 
