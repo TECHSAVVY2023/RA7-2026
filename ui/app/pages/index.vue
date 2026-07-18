@@ -206,11 +206,209 @@
                     <span class="ml-1.5 text-xs text-slate-950/48">/ night</span>
                   </div>
                   <button :class="[buttonBaseClass, buttonPrimaryClass]" type="button" @click="scrollTo('book')">
-                    Reserve
+                    View more ->
                   </button>
                 </div>
               </div>
             </Motion>
+          </div>
+
+          <!-- Super Deluxe Room Section -->
+          <div v-if="selectedStayTab === 'Super Deluxe'" class="mt-8 space-y-6">
+            <!-- Room Photo Gallery -->
+            <Motion
+              as="div"
+              :initial="sectionInitial"
+              :while-in-view="sectionInView"
+              :in-view-options="cardInViewOptions"
+              :transition="sectionTransition"
+            >
+              <div class="mb-5 grid gap-2">
+                <h3 class="m-0 text-2xl font-bold tracking-[-0.4px] text-slate-950/92">Super Deluxe Gallery</h3>
+                <p class="m-0 max-w-[70ch] text-sm leading-normal text-slate-950/66">Explore the luxury and comfort of our premium rooms designed for an exceptional stay.</p>
+              </div>
+              
+              <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-2">
+                <Motion
+                  v-for="(item, index) in superDeluxeGalleryItems"
+                  :key="item.title"
+                  as="article"
+                  :initial="cardInitial"
+                  :while-in-view="cardInView"
+                  :in-view-options="cardInViewOptions"
+                  :transition="staggerTransition(index)"
+                  class="group overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)] transition-shadow duration-300 hover:shadow-[0_24px_64px_rgba(245,158,11,0.16)]"
+                >
+                  <div class="relative h-[240px] min-[860px]:h-[280px] overflow-hidden rounded-t-[22px] bg-slate-100">
+                    <img :src="item.image" :alt="item.title" class="block w-full h-full object-cover object-center transition duration-500 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,6,23,0.01)_0%,rgba(2,6,23,0.15)_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div class="p-5">
+                    <p class="m-0 text-xs font-bold uppercase tracking-[0.24em] text-amber-600">{{ item.tag }}</p>
+                    <h4 class="m-0 mt-3 text-lg font-bold text-slate-950/92">{{ item.title }}</h4>
+                    <p class="m-0 mt-2 text-sm leading-normal text-slate-950/66">{{ item.desc }}</p>
+                  </div>
+                </Motion>
+              </div>
+            </Motion>
+
+            <!-- Room Content Layout Section -->
+            <Motion
+              as="div"
+              :initial="sectionInitial"
+              :while-in-view="sectionInView"
+              :in-view-options="cardInViewOptions"
+              :transition="sectionTransition"
+              class="overflow-hidden rounded-[28px] border border-slate-950/10 bg-gradient-to-br from-white/92 to-white/78 shadow-[0_20px_55px_rgba(2,6,23,0.1)] backdrop-blur-[6px]"
+            >
+              <div class="grid grid-cols-1 gap-6 p-6 min-[860px]:p-8 min-[860px]:grid-cols-[1.2fr_0.8fr] min-[860px]:gap-8">
+                <!-- Content -->
+                <div class="flex flex-col justify-between">
+                  <div>
+                    <p class="m-0 text-xs font-bold uppercase tracking-[0.24em] text-amber-600">Premium Accommodation</p>
+                    <h3 class="m-0 mt-3 text-3xl font-bold tracking-[-0.6px] text-slate-950/92">Garden View Room</h3>
+                    <p class="m-0 mt-4 text-base leading-relaxed text-slate-950/72">Experience spacious luxury with premium garden views and complimentary breakfast. Perfect for those seeking elevated comfort and refined amenities during their island escape.</p>
+                    
+                    <!-- Key Features -->
+                    <div class="mt-6 space-y-2">
+                      <div class="flex items-center gap-3 text-sm text-slate-950/72">
+                        <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">👥</span>
+                        <span><strong>Capacity:</strong> 2 guests</span>
+                      </div>
+                      <div class="flex items-center gap-3 text-sm text-slate-950/72">
+                        <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">🛏️</span>
+                        <span><strong>Beds:</strong> 1 King + 1 Queen (extra bed available at ₱300)</span>
+                      </div>
+                      <div class="flex items-center gap-3 text-sm text-slate-950/72">
+                        <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">🌳</span>
+                        <span><strong>View:</strong> Garden view with private balcony</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- CTA Button -->
+                  <button :class="[buttonBaseClass, buttonPrimaryClass, buttonXlClass, 'mt-6 min-[860px]:mt-0']" type="button" @click="scrollTo('book')">
+                    Reserve your stay
+                  </button>
+                </div>
+
+                <!-- Pricing Card -->
+                <div class="flex flex-col gap-4">
+                  <div class="flex flex-col gap-1 rounded-[20px] border border-amber-200/50 bg-gradient-to-br from-amber-50/80 to-amber-50/40 p-6 shadow-[0_12px_32px_rgba(245,158,11,0.12)]">
+                    <p class="m-0 text-xs font-bold uppercase tracking-[0.2em] text-amber-700/80">Starting price</p>
+                    <div class="mt-2">
+                      <span class="text-4xl font-black tracking-[-0.8px] text-amber-950">₱0,000</span>
+                      <span class="ml-2 text-sm font-semibold text-amber-900/72">/ night</span>
+                    </div>
+                  </div>
+
+                  <!-- Inclusions Badge -->
+                  <div class="rounded-[18px] border border-slate-950/8 bg-white/70 p-4">
+                    <p class="m-0 mb-3 text-xs font-bold uppercase tracking-[0.2em] text-slate-950/48">Includes</p>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2.5 text-sm text-slate-950/72">
+                        <span class="text-lg">🍳</span>
+                        <span>Complimentary breakfast</span>
+                      </div>
+                      <div class="flex items-center gap-2.5 text-sm text-slate-950/72">
+                        <span class="text-lg">📶</span>
+                        <span>High-speed WiFi</span>
+                      </div>
+                      <div class="flex items-center gap-2.5 text-sm text-slate-950/72">
+                        <span class="text-lg">🧖</span>
+                        <span>Premium toiletries</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Motion>
+
+            <!-- Room Layout Visual & Amenities -->
+            <div class="grid grid-cols-1 gap-3.5 min-[860px]:grid-cols-2">
+              <!-- Room Floor Plan -->
+              <Motion
+                as="div"
+                :initial="cardInitial"
+                :while-in-view="cardInView"
+                :in-view-options="cardInViewOptions"
+                :transition="sectionTransition"
+                class="relative overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)] p-6"
+              >
+                <div class="mb-4">
+                  <h3 class="m-0 text-xl font-bold text-slate-950/92">Room Floor Plan</h3>
+                </div>
+                <div class="space-y-3 text-sm">
+                  <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
+                    <div class="font-bold text-amber-900/80 mb-2">🚪 Entrance Lobby</div>
+                    <div class="text-slate-950/66">Small welcoming entrance space with direct access to all room areas.</div>
+                  </div>
+                  <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
+                    <div class="font-bold text-amber-900/80 mb-2">🛋️ Sala (Living Area)</div>
+                    <div class="text-slate-950/66">Dedicated sitting and relaxation space with comfortable seating.</div>
+                  </div>
+                  <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
+                    <div class="font-bold text-amber-900/80 mb-2">🛏️ Bedroom</div>
+                    <div class="text-slate-950/66">Separate designated space for rest with premium bedding.</div>
+                  </div>
+                  <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
+                    <div class="font-bold text-amber-900/80 mb-2">🚿 Bathroom (CR)</div>
+                    <div class="text-slate-950/66">Modern shower facility with premium bathroom fixtures and amenities.</div>
+                  </div>
+                </div>
+              </Motion>
+
+              <!-- Room Amenities -->
+              <Motion
+                as="div"
+                :initial="cardInitial"
+                :while-in-view="cardInView"
+                :in-view-options="cardInViewOptions"
+                :transition="staggerTransition(1)"
+                class="overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)] p-6"
+              >
+                <div class="mb-4">
+                  <h3 class="m-0 text-xl font-bold text-slate-950/92">Room Amenities</h3>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-start gap-3 rounded-lg bg-gradient-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
+                    <div class="text-2xl">❄️</div>
+                    <div>
+                      <div class="font-bold text-slate-950/92">Air Conditioning</div>
+                      <div class="text-sm text-slate-950/66">Full climate control for year-round comfort</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 rounded-lg bg-gradient-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
+                    <div class="text-2xl">📺</div>
+                    <div>
+                      <div class="font-bold text-slate-950/92">Television</div>
+                      <div class="text-sm text-slate-950/66">Entertainment at your leisure</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 rounded-lg bg-gradient-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
+                    <div class="text-2xl">👔</div>
+                    <div>
+                      <div class="font-bold text-slate-950/92">Wardrobes</div>
+                      <div class="text-sm text-slate-950/66">Ample storage for your belongings</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 rounded-lg bg-gradient-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
+                    <div class="text-2xl">🍽️</div>
+                    <div>
+                      <div class="font-bold text-slate-950/92">Complimentary Breakfast</div>
+                      <div class="text-sm text-slate-950/66">Fresh daily breakfast included with your stay</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 rounded-lg bg-gradient-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
+                    <div class="text-2xl">📶</div>
+                    <div>
+                      <div class="font-bold text-slate-950/92">Free WiFi</div>
+                      <div class="text-sm text-slate-950/66">High-speed internet throughout the room</div>
+                    </div>
+                  </div>
+                </div>
+              </Motion>
+            </div>
           </div>
         </div>
       </Motion>
@@ -513,26 +711,15 @@ const selectedStayTab = ref<StayTab>('Super Deluxe')
 
 const stays: Stay[] = [
   {
-    name: 'Coastal Deluxe',
-    desc: 'A bright room with a breezy layout and a cozy corner for slow mornings.',
+    name: 'Super Deluxe Room',
+    desc: 'Spacious room with garden views, complimentary breakfast included.',
     badge: 'Popular',
-    guests: '2 guests',
-    beds: '1 queen',
-    view: 'Garden view',
-    price: '₱0,000',
+    guests: '4 guests',
+    beds: '1 King + 1 Queen',
+    view: 'Living area',
+    price: '₱0,00',
     tab: 'Super Deluxe',
     tint: "url('/images/landscape5.jpg') center / cover no-repeat",
-  },
-  {
-    name: 'Poolside Suite',
-    desc: 'Steps from the pool with extra space to lounge and reset.',
-    badge: 'Top pick',
-    guests: '2–3 guests',
-    beds: '1 king',
-    view: 'Pool view',
-    price: '₱0,000',
-    tab: 'Super Deluxe',
-    tint: "url('/images/landscape10.jpg') center / cover no-repeat",
   },
   {
     name: 'Family Haven',
@@ -621,6 +808,13 @@ const gallery = [
   { slug: 'roomComfort', title: 'Room comfort', text: 'Rest-forward design details.', image: landscapes[4] },
   { slug: 'diningCorner', title: 'Dining corner', text: 'Fresh plates, easy mornings.', image: landscapes[6] },
   { slug: 'sunsetDeck', title: 'Sunset deck', text: 'The signature RA7 view.', image: landscapes[11] },
+]
+
+const superDeluxeGalleryItems = [
+  { title: 'Premium king suite', tag: 'Spacious comfort', desc: 'Generously proportioned bedroom with luxury bedding and premium finishes.', image: landscapes[0] },
+  { title: 'Garden view balcony', tag: 'Scenic retreat', desc: 'Private balcony overlooking manicured gardens with comfortable seating.', image: landscapes[5] },
+  { title: 'Spa-inspired bathroom', tag: 'Luxury amenities', desc: 'Modern bathroom with rainfall shower and premium bath products.', image: landscapes[3] },
+  { title: 'Living room lounge', tag: 'Social space', desc: 'Dedicated sala with premium seating, entertainment systems, and natural light.', image: landscapes[7] },
 ]
 
 function scrollTo(id: string) {
