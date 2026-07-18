@@ -341,21 +341,39 @@
               </div>
               <div class="rounded-4.5 border border-white/10 bg-white/4 p-3">
                 <div class="text-xs font-extrabold text-slate-950/48">Front desk</div>
-                <div class="mt-1.5 font-extrabold">24/7 support</div>
+                <div class="mt-1.5 font-extrabold">7am - 10pm support</div>
               </div>
             </div>
           </div>
 
-          <div
-            class="relative h-65 overflow-hidden rounded-[26px] border border-slate-950/10 bg-[radial-gradient(800px_280px_at_10%_20%,rgba(245,197,66,0.14),transparent_60%),radial-gradient(700px_240px_at_95%_30%,rgba(245,158,11,0.12),transparent_58%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.62))] shadow-[0_18px_60px_rgba(2,6,23,0.12)] before:absolute before:inset-0 before:bg-[linear-gradient(rgba(2,6,23,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(2,6,23,0.06)_1px,transparent_1px)] before:bg-size:36px_36px] before:opacity-25 before:content-['']"
-            aria-hidden="true"
-          >
-            <div class="absolute left-[55%] top-[52%] h-4.5 w-4.5 rounded-full bg-amber-500/95 shadow-[0_0_0_8px_rgba(245,158,11,0.18),0_18px_45px_rgba(0,0,0,0.18)]" />
-            <div class="absolute inset-x-4.5 bottom-4.5 rounded-4.5 border border-slate-950/12 bg-white/74 p-3.5 backdrop-blur-[10px]">
-              <div class="font-black">RA7 Resort</div>
-              <div class="mt-1 text-[13px] text-slate-950/66">Coastal drive • Scenic route</div>
-            </div>
-          </div>
+         <!-- 1. The main parent card wrapper -->
+<div class="relative w-full h-[400px] rounded-3xl overflow-hidden border border-slate-950/10">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.016757839492!2d123.86563439999999!3d8.2010653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3255abc87a3542db%3A0x32ae5dfd164e9a27!2sRA7%20Beach%20Resort!5e0!3m2!1sen!2sph!4v1784368761382!5m2!1sen!2sph" 
+    class="w-full h-full border-0" 
+    allowfullscreen 
+    loading="lazy" 
+    referrerpolicy="strict-origin-when-cross-origin">
+  </iframe>
+
+
+  <div class="absolute inset-x-4.5 bottom-4.5 pointer-events-none">
+    <a 
+      href="https://maps.google.com/?q=RA7+Beach+Resort+Clarin+Misamis+Occidental" 
+      target="_blank" 
+      class="block rounded-4.5 border border-slate-950/12 bg-white/74 p-3.5 backdrop-blur-[10px] pointer-events-auto hover:bg-white/90 transition-colors cursor-pointer">
+      
+      <div class="font-bold text-slate-950">RA7 Resort</div>
+      <div class="mt-1 text-[13px] text-slate-950/66 flex items-center gap-1">
+        Coastal drive • Scenic route 
+        <span class="text-[11px]">↗</span>
+      </div>
+
+    </a>
+
+  </div>
+
+</div>
         </div>
       </Motion>
 
