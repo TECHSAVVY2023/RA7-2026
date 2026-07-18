@@ -12,5 +12,5 @@ import SiteNavbar from './SiteNavbar.vue'
 
 const route = useRoute()
 
-const showChrome = computed(() => !route.path.startsWith('/login') && !route.path.startsWith('/super-deluxe'))
+const showChrome = computed(() => !route.path.startsWith('/login') && !route.path.startsWith('/super-deluxe') && !route.path.startsWith('/deluxe') && !route.path.startsWith('/standard') && !route.path.startsWith('/pavilions'))
 </script>

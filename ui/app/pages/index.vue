@@ -99,7 +99,7 @@
         </div>
       </Motion>
 
-      <div id="highlights" class="mt-8">
+      <div id="highlights" class="mt-8 scroll-mt-15">
         &nbsp;
       </div>
       <Motion
@@ -136,7 +136,7 @@
         </div>
       </Motion>
 
-      <div id="stays" class="mt-8">
+      <div id="stays" class="mt-8 scroll-mt-15">
         &nbsp;
       </div>
       <Motion
@@ -217,7 +217,7 @@
         </div>
       </Motion>
 
-      <div id="amenities" class="mt-8">
+      <div id="amenities" class="mt-8 scroll-mt-15">
         &nbsp;
       </div>
       <Motion
@@ -259,7 +259,7 @@
         </div>
       </Motion>
 
-      <div id="gallery" class="mt-8">
+      <div id="gallery" class="mt-8 scroll-mt-15">
         &nbsp;
       </div>
       <Motion
@@ -311,7 +311,7 @@
         </div>
       </Motion>
 
-      <div id="location" class="mt-8">
+      <div id="location" class="mt-8 scroll-mt-15">
         &nbsp;
       </div>
       <Motion
