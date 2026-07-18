@@ -5,7 +5,7 @@
       <div class="mx-auto flex max-w-7xl items-center px-6 py-4">
         <button
           class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-950/80 transition-colors duration-200 hover:bg-slate-100 hover:text-slate-950"
-          @click="goBackToStays('Super Deluxe')"
+          @click="goBackToStays('Pavilions')"
         >
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -27,14 +27,14 @@
         :transition="sectionTransition"
       >
         <div class="mb-5 grid gap-2">
-          <h2 class="m-0 text-4xl font-bold tracking-[-0.4px] text-slate-950/92">Super Deluxe Gallery</h2>
-          <p class="m-0 max-w-[70ch] text-base leading-normal text-slate-950/66">Explore the luxury and comfort of our premium rooms designed for an exceptional stay.</p>
+          <h2 class="m-0 text-4xl font-bold tracking-[-0.4px] text-slate-950/92">Luxury Pavilion Gallery</h2>
+          <p class="m-0 max-w-[70ch] text-base leading-normal text-slate-950/66">Indulge in ultimate luxury with our exclusive Pavilion accommodations featuring private amenities and expansive living spaces.</p>
         </div>
 
         <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-2">
           <!-- @ts-ignore motion-v type incompatibility -->
           <Motion
-            v-for="(item, index) in superDeluxeGalleryItems"
+            v-for="(item, index) in pavilionGalleryItems"
             :key="item.title"
             as="article"
             :initial="cardInitial"
@@ -70,23 +70,23 @@
           <!-- Content -->
           <div class="flex flex-col justify-between">
             <div>
-              <p class="m-0 text-xs font-bold uppercase tracking-[0.24em] text-amber-600">Premium Accommodation</p>
-              <h3 class="m-0 mt-3 text-3xl font-bold tracking-[-0.6px] text-slate-950/92">Garden View Room</h3>
-              <p class="m-0 mt-4 text-base leading-relaxed text-slate-950/72">Experience spacious luxury with premium garden views and complimentary breakfast. Perfect for those seeking elevated comfort and refined amenities during their island escape.</p>
+              <p class="m-0 text-xs font-bold uppercase tracking-[0.24em] text-amber-600">Exclusive Luxury</p>
+              <h3 class="m-0 mt-3 text-3xl font-bold tracking-[-0.6px] text-slate-950/92">Luxury Pavilion</h3>
+              <p class="m-0 mt-4 text-base leading-relaxed text-slate-950/72">Experience unparalleled luxury in our exclusive Pavilions. With sprawling private spaces, premium amenities including a private pool, and personalized butler service, these are perfect for families or guests seeking the ultimate resort experience.</p>
               
               <!-- Key Features -->
               <div class="mt-6 space-y-2">
                 <div class="flex items-center gap-3 text-sm text-slate-950/72">
                   <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">👥</span>
-                  <span><strong>Capacity:</strong> 4 guests</span>
+                  <span><strong>Capacity:</strong> 4+ guests (Family-friendly)</span>
                 </div>
                 <div class="flex items-center gap-3 text-sm text-slate-950/72">
                   <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">🛏️</span>
-                  <span><strong>Beds:</strong> 1 King + 1 Queen (extra bed available at ₱300)</span>
+                  <span><strong>Beds:</strong> 2 King Beds + Multi-room Configuration</span>
                 </div>
                 <div class="flex items-center gap-3 text-sm text-slate-950/72">
-                  <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">🌳</span>
-                  <span><strong>View:</strong> Garden view with private balcony</span>
+                  <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">📐</span>
+                  <span><strong>Size:</strong> 120 m²</span>
                 </div>
               </div>
             </div>
@@ -112,16 +112,16 @@
               <p class="m-0 mb-3 text-xs font-bold uppercase tracking-[0.2em] text-slate-950/48">Includes</p>
               <div class="space-y-2">
                 <div class="flex items-center gap-2.5 text-sm text-slate-950/72">
-                  <span class="text-lg">🍳</span>
-                  <span>Complimentary breakfast</span>
+                  <span class="text-lg">🏊</span>
+                  <span>Private pool access</span>
                 </div>
                 <div class="flex items-center gap-2.5 text-sm text-slate-950/72">
-                  <span class="text-lg">📶</span>
-                  <span>High-speed WiFi</span>
+                  <span class="text-lg">🍽️</span>
+                  <span>Private dining area</span>
                 </div>
                 <div class="flex items-center gap-2.5 text-sm text-slate-950/72">
-                  <span class="text-lg">🧖</span>
-                  <span>Premium toiletries</span>
+                  <span class="text-lg">👔</span>
+                  <span>Butler service</span>
                 </div>
               </div>
             </div>
@@ -142,24 +142,24 @@
           class="relative overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)] p-6"
         >
           <div class="mb-4">
-            <h3 class="m-0 text-xl font-bold text-slate-950/92">Room Floor Plan</h3>
+            <h3 class="m-0 text-xl font-bold text-slate-950/92">Pavilion Layout</h3>
           </div>
           <div class="space-y-3 text-sm">
             <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
-              <div class="font-bold text-amber-900/80 mb-2">🚪 Entrance Lobby</div>
-              <div class="text-slate-950/66">Small welcoming entrance space with direct access to all room areas.</div>
+              <div class="font-bold text-amber-900/80 mb-2">🚪 Grand Entrance</div>
+              <div class="text-slate-950/66">Spacious foyer with direct access to all pavilion areas.</div>
             </div>
             <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
-              <div class="font-bold text-amber-900/80 mb-2">🛋️ Sala (Living Area)</div>
-              <div class="text-slate-950/66">Dedicated sitting and relaxation space with comfortable seating.</div>
+              <div class="font-bold text-amber-900/80 mb-2">🛋️ Sala & Living Area</div>
+              <div class="text-slate-950/66">Expansive living and entertainment space for relaxation.</div>
             </div>
             <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
-              <div class="font-bold text-amber-900/80 mb-2">🛏️ Bedroom</div>
-              <div class="text-slate-950/66">Separate designated space for rest with premium bedding.</div>
+              <div class="font-bold text-amber-900/80 mb-2">🛏️ Master Bedroom Suite</div>
+              <div class="text-slate-950/66">Luxurious master bedroom with premium furnishings.</div>
             </div>
             <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
-              <div class="font-bold text-amber-900/80 mb-2">🚿 Bathroom (CR)</div>
-              <div class="text-slate-950/66">Modern shower facility with premium bathroom fixtures and amenities.</div>
+              <div class="font-bold text-amber-900/80 mb-2">🏊 Private Pool Deck</div>
+              <div class="text-slate-950/66">Exclusive outdoor area with private swimming pool.</div>
             </div>
           </div>
         </Motion>
@@ -175,42 +175,42 @@
           class="overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)] p-6"
         >
           <div class="mb-4">
-            <h3 class="m-0 text-xl font-bold text-slate-950/92">Room Amenities</h3>
+            <h3 class="m-0 text-xl font-bold text-slate-950/92">Pavilion Amenities</h3>
           </div>
           <div class="space-y-3">
             <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
-              <div class="text-2xl">❄️</div>
+              <div class="text-2xl">🏊</div>
               <div>
-                <div class="font-bold text-slate-950/92">Air Conditioning</div>
-                <div class="text-sm text-slate-950/66">Full climate control for year-round comfort</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
-              <div class="text-2xl">📺</div>
-              <div>
-                <div class="font-bold text-slate-950/92">Television</div>
-                <div class="text-sm text-slate-950/66">Entertainment at your leisure</div>
+                <div class="font-bold text-slate-950/92">Private Pool</div>
+                <div class="text-sm text-slate-950/66">Exclusive swimming pool for pavilion guests</div>
               </div>
             </div>
             <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
               <div class="text-2xl">👔</div>
               <div>
-                <div class="font-bold text-slate-950/92">Wardrobes</div>
-                <div class="text-sm text-slate-950/66">Ample storage for your belongings</div>
+                <div class="font-bold text-slate-950/92">Butler Service</div>
+                <div class="text-sm text-slate-950/66">Personalized butler assistance 24/7</div>
               </div>
             </div>
             <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
               <div class="text-2xl">🍽️</div>
               <div>
-                <div class="font-bold text-slate-950/92">Complimentary Breakfast</div>
-                <div class="text-sm text-slate-950/66">Fresh daily breakfast included with your stay</div>
+                <div class="font-bold text-slate-950/92">Private Dining Area</div>
+                <div class="text-sm text-slate-950/66">Exclusive dining space and kitchen facilities</div>
               </div>
             </div>
             <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
-              <div class="text-2xl">📶</div>
+              <div class="text-2xl">🛁</div>
               <div>
-                <div class="font-bold text-slate-950/92">Free WiFi</div>
-                <div class="text-sm text-slate-950/66">High-speed internet throughout the room</div>
+                <div class="font-bold text-slate-950/92">Luxury Spa Bath</div>
+                <div class="text-sm text-slate-950/66">Premium bathroom with soaking tub and rainfall shower</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
+              <div class="text-2xl">🎬</div>
+              <div>
+                <div class="font-bold text-slate-950/92">Home Theater System</div>
+                <div class="text-sm text-slate-950/66">State-of-the-art entertainment system</div>
               </div>
             </div>
           </div>
@@ -223,13 +223,20 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
 
+useHead({
+  title: 'Luxury Pavilion - RA7 Resort',
+  meta: [
+    { name: 'description', content: 'Experience ultimate luxury in our Pavilion. 120 m² of exclusive space with private pool, butler service, and premium amenities for families.' },
+    { property: 'og:title', content: 'Luxury Pavilion - RA7 Resort' },
+    { property: 'og:description', content: 'Ultimate luxury with private pool, butler service, and exclusive amenities. Perfect for family vacations.' },
+  ],
+})
 
-
-const superDeluxeGalleryItems = [
-  { title: 'Premium king suite', tag: 'Spacious comfort', desc: 'Luxurious sleeping quarters with premium bedding and sophisticated decor.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
-  { title: 'Garden view balcony', tag: 'Scenic vistas', desc: 'Private outdoor space overlooking lush gardens and resort grounds.', image: 'https://images.unsplash.com/photo-1618161400198-e6301c3b2e29?w=600&h=400&fit=crop' },
-  { title: 'Spa-inspired bathroom', tag: 'Luxury amenities', desc: 'Rainfall shower and premium toiletries for ultimate relaxation.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
-  { title: 'Living room lounge', tag: 'Entertainment hub', desc: 'Comfortable seating area with entertainment system and ambient lighting.', image: 'https://images.unsplash.com/photo-1567538096051-b6643b25c45d?w=600&h=400&fit=crop' },
+const pavilionGalleryItems = [
+  { title: 'Master suite opulence', tag: 'Ultra-luxury', desc: 'Expansive bedroom with premium linens and luxurious furnishings throughout.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
+  { title: 'Private resort pool', tag: 'Exclusive amenity', desc: 'Your own private swimming pool with stunning views and complete privacy.', image: 'https://images.unsplash.com/photo-1618161400198-e6301c3b2e29?w=600&h=400&fit=crop' },
+  { title: 'Spa-inspired luxury bath', tag: 'Premium facilities', desc: 'Sophisticated bathroom with soaking tub, rainfall shower, and premium toiletries.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
+  { title: 'Grand living pavilion', tag: 'Entertainment hub', desc: 'Spacious living area with state-of-the-art entertainment and panoramic views.', image: 'https://images.unsplash.com/photo-1567538096051-b6643b25c45d?w=600&h=400&fit=crop' },
 ]
 
 const sectionInitial = { opacity: 0, y: 20 } as const
@@ -255,7 +262,7 @@ function scrollTo(id: string) {
 }
 
 function goBackToStays(tab: string) {
-  if (import.meta.client) {
+  if (process.client) {
     localStorage.setItem('selectedStayTab', tab)
   }
   navigateTo('/#stays')

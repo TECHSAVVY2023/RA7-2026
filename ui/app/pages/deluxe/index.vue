@@ -5,7 +5,7 @@
       <div class="mx-auto flex max-w-7xl items-center px-6 py-4">
         <button
           class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-950/80 transition-colors duration-200 hover:bg-slate-100 hover:text-slate-950"
-          @click="goBackToStays('Super Deluxe')"
+          @click="goBackToStays('Deluxe')"
         >
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -27,14 +27,14 @@
         :transition="sectionTransition"
       >
         <div class="mb-5 grid gap-2">
-          <h2 class="m-0 text-4xl font-bold tracking-[-0.4px] text-slate-950/92">Super Deluxe Gallery</h2>
-          <p class="m-0 max-w-[70ch] text-base leading-normal text-slate-950/66">Explore the luxury and comfort of our premium rooms designed for an exceptional stay.</p>
+          <h2 class="m-0 text-4xl font-bold tracking-[-0.4px] text-slate-950/92">Deluxe Gallery</h2>
+          <p class="m-0 max-w-[70ch] text-base leading-normal text-slate-950/66">Discover the elegant simplicity and comfort of our thoughtfully designed Deluxe rooms.</p>
         </div>
 
         <div class="grid grid-cols-1 gap-3 min-[860px]:grid-cols-2">
           <!-- @ts-ignore motion-v type incompatibility -->
           <Motion
-            v-for="(item, index) in superDeluxeGalleryItems"
+            v-for="(item, index) in deluxeGalleryItems"
             :key="item.title"
             as="article"
             :initial="cardInitial"
@@ -70,23 +70,23 @@
           <!-- Content -->
           <div class="flex flex-col justify-between">
             <div>
-              <p class="m-0 text-xs font-bold uppercase tracking-[0.24em] text-amber-600">Premium Accommodation</p>
-              <h3 class="m-0 mt-3 text-3xl font-bold tracking-[-0.6px] text-slate-950/92">Garden View Room</h3>
-              <p class="m-0 mt-4 text-base leading-relaxed text-slate-950/72">Experience spacious luxury with premium garden views and complimentary breakfast. Perfect for those seeking elevated comfort and refined amenities during their island escape.</p>
+              <p class="m-0 text-xs font-bold uppercase tracking-[0.24em] text-amber-600">Premium Comfort</p>
+              <h3 class="m-0 mt-3 text-3xl font-bold tracking-[-0.6px] text-slate-950/92">Deluxe Room</h3>
+              <p class="m-0 mt-4 text-base leading-relaxed text-slate-950/72">Enjoy refined comfort in our well-appointed Deluxe rooms, featuring premium furnishings and modern amenities. Ideal for discerning travelers seeking quality accommodation at excellent value.</p>
               
               <!-- Key Features -->
               <div class="mt-6 space-y-2">
                 <div class="flex items-center gap-3 text-sm text-slate-950/72">
                   <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">👥</span>
-                  <span><strong>Capacity:</strong> 4 guests</span>
+                  <span><strong>Capacity:</strong> 3 guests</span>
                 </div>
                 <div class="flex items-center gap-3 text-sm text-slate-950/72">
                   <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">🛏️</span>
-                  <span><strong>Beds:</strong> 1 King + 1 Queen (extra bed available at ₱300)</span>
+                  <span><strong>Beds:</strong> 1 King Bed (extra bed available at ₱250)</span>
                 </div>
                 <div class="flex items-center gap-3 text-sm text-slate-950/72">
-                  <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">🌳</span>
-                  <span><strong>View:</strong> Garden view with private balcony</span>
+                  <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-100/60 text-amber-700 text-xs font-bold">📐</span>
+                  <span><strong>Size:</strong> 45 m²</span>
                 </div>
               </div>
             </div>
@@ -120,8 +120,8 @@
                   <span>High-speed WiFi</span>
                 </div>
                 <div class="flex items-center gap-2.5 text-sm text-slate-950/72">
-                  <span class="text-lg">🧖</span>
-                  <span>Premium toiletries</span>
+                  <span class="text-lg">🛎️</span>
+                  <span>Room service</span>
                 </div>
               </div>
             </div>
@@ -142,24 +142,20 @@
           class="relative overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)] p-6"
         >
           <div class="mb-4">
-            <h3 class="m-0 text-xl font-bold text-slate-950/92">Room Floor Plan</h3>
+            <h3 class="m-0 text-xl font-bold text-slate-950/92">Room Layout</h3>
           </div>
           <div class="space-y-3 text-sm">
             <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
-              <div class="font-bold text-amber-900/80 mb-2">🚪 Entrance Lobby</div>
-              <div class="text-slate-950/66">Small welcoming entrance space with direct access to all room areas.</div>
-            </div>
-            <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
-              <div class="font-bold text-amber-900/80 mb-2">🛋️ Sala (Living Area)</div>
-              <div class="text-slate-950/66">Dedicated sitting and relaxation space with comfortable seating.</div>
+              <div class="font-bold text-amber-900/80 mb-2">🚪 Entrance</div>
+              <div class="text-slate-950/66">Welcoming entrance space with convenient access.</div>
             </div>
             <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
               <div class="font-bold text-amber-900/80 mb-2">🛏️ Bedroom</div>
-              <div class="text-slate-950/66">Separate designated space for rest with premium bedding.</div>
+              <div class="text-slate-950/66">Comfortable sleeping space with quality bedding.</div>
             </div>
             <div class="rounded-lg bg-amber-50/60 p-4 border border-amber-200/40">
-              <div class="font-bold text-amber-900/80 mb-2">🚿 Bathroom (CR)</div>
-              <div class="text-slate-950/66">Modern shower facility with premium bathroom fixtures and amenities.</div>
+              <div class="font-bold text-amber-900/80 mb-2">🚿 Bathroom</div>
+              <div class="text-slate-950/66">Modern facilities with shower and premium amenities.</div>
             </div>
           </div>
         </Motion>
@@ -182,35 +178,35 @@
               <div class="text-2xl">❄️</div>
               <div>
                 <div class="font-bold text-slate-950/92">Air Conditioning</div>
-                <div class="text-sm text-slate-950/66">Full climate control for year-round comfort</div>
+                <div class="text-sm text-slate-950/66">Climate control for your comfort</div>
               </div>
             </div>
             <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
               <div class="text-2xl">📺</div>
               <div>
-                <div class="font-bold text-slate-950/92">Television</div>
-                <div class="text-sm text-slate-950/66">Entertainment at your leisure</div>
+                <div class="font-bold text-slate-950/92">LED Television</div>
+                <div class="text-sm text-slate-950/66">Entertainment with cable channels</div>
               </div>
             </div>
             <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
-              <div class="text-2xl">👔</div>
+              <div class="text-2xl">☕</div>
               <div>
-                <div class="font-bold text-slate-950/92">Wardrobes</div>
-                <div class="text-sm text-slate-950/66">Ample storage for your belongings</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
-              <div class="text-2xl">🍽️</div>
-              <div>
-                <div class="font-bold text-slate-950/92">Complimentary Breakfast</div>
-                <div class="text-sm text-slate-950/66">Fresh daily breakfast included with your stay</div>
+                <div class="font-bold text-slate-950/92">Coffee Maker</div>
+                <div class="text-sm text-slate-950/66">In-room coffee and tea station</div>
               </div>
             </div>
             <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
               <div class="text-2xl">📶</div>
               <div>
                 <div class="font-bold text-slate-950/92">Free WiFi</div>
-                <div class="text-sm text-slate-950/66">High-speed internet throughout the room</div>
+                <div class="text-sm text-slate-950/66">High-speed internet connectivity</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 rounded-lg bg-linear-to-r from-amber-50/80 to-amber-50/40 p-4 border border-amber-200/40">
+              <div class="text-2xl">🛎️</div>
+              <div>
+                <div class="font-bold text-slate-950/92">Concierge Service</div>
+                <div class="text-sm text-slate-950/66">Personalized assistance available</div>
               </div>
             </div>
           </div>
@@ -223,13 +219,20 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
 
+useHead({
+  title: 'Deluxe Room - RA7 Resort',
+  meta: [
+    { name: 'description', content: 'Experience elegant comfort in our Deluxe Room. 45 m², perfect for 3 guests. Premium amenities and excellent value.' },
+    { property: 'og:title', content: 'Deluxe Room - RA7 Resort' },
+    { property: 'og:description', content: 'Experience elegant comfort in our Deluxe Room. 45 m², perfect for 3 guests.' },
+  ],
+})
 
-
-const superDeluxeGalleryItems = [
-  { title: 'Premium king suite', tag: 'Spacious comfort', desc: 'Luxurious sleeping quarters with premium bedding and sophisticated decor.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
-  { title: 'Garden view balcony', tag: 'Scenic vistas', desc: 'Private outdoor space overlooking lush gardens and resort grounds.', image: 'https://images.unsplash.com/photo-1618161400198-e6301c3b2e29?w=600&h=400&fit=crop' },
-  { title: 'Spa-inspired bathroom', tag: 'Luxury amenities', desc: 'Rainfall shower and premium toiletries for ultimate relaxation.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
-  { title: 'Living room lounge', tag: 'Entertainment hub', desc: 'Comfortable seating area with entertainment system and ambient lighting.', image: 'https://images.unsplash.com/photo-1567538096051-b6643b25c45d?w=600&h=400&fit=crop' },
+const deluxeGalleryItems = [
+  { title: 'Comfortable bed suite', tag: 'Quality bedding', desc: 'Spacious sleeping area with premium comfort and quality furnishings.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
+  { title: 'Modern workspace', tag: 'Business-friendly', desc: 'Desk and ergonomic seating suitable for work or relaxation.', image: 'https://images.unsplash.com/photo-1618161400198-e6301c3b2e29?w=600&h=400&fit=crop' },
+  { title: 'Tidy bathroom', tag: 'Clean facilities', desc: 'Well-appointed bathroom with shower and quality toiletries.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
+  { title: 'Welcoming interior', tag: 'Comfortable space', desc: 'Thoughtfully designed room layout optimizing comfort and functionality.', image: 'https://images.unsplash.com/photo-1567538096051-b6643b25c45d?w=600&h=400&fit=crop' },
 ]
 
 const sectionInitial = { opacity: 0, y: 20 } as const

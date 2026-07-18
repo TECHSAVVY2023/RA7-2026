@@ -205,7 +205,7 @@
                     <span class="ml-2 inline-block font-black tracking-[-0.2px]">{{ stay.price }}</span>
                     <span class="ml-1.5 text-xs text-slate-950/48">/ night</span>
                   </div>
-                  <button :class="[buttonBaseClass, buttonPrimaryClass]" type="button" @click="navigateTo('/super-deluxe')">
+                  <button :class="[buttonBaseClass, buttonPrimaryClass]" type="button" @click="navigateTo(getRoomRoute(stay.tab))">
                     View more ->
                   </button>
                 </div>
@@ -511,6 +511,19 @@ const amenities: Amenity[] = [
 
 const stayTabs: StayTab[] = ['Super Deluxe', 'Deluxe', 'Standard', 'Pavilions']
 const selectedStayTab = ref<StayTab>('Super Deluxe')
+
+onMounted(() => {
+  // Restore the last selected tab from localStorage
+  const savedTab = localStorage.getItem('selectedStayTab') as StayTab | null
+  if (savedTab && stayTabs.includes(savedTab)) {
+    selectedStayTab.value = savedTab
+  }
+})
+
+watch(selectedStayTab, (newTab) => {
+  // Save the selected tab to localStorage whenever it changes
+  localStorage.setItem('selectedStayTab', newTab)
+})
 const stays: Stay[] = [
   {
     name: 'Super Deluxe Room',
@@ -526,7 +539,7 @@ const stays: Stay[] = [
   {
     name: 'Family Haven',
     desc: 'Designed for together time: roomy, practical, and easy to settle into.',
-    badge: 'Family',
+    badge: 'Popular',
     guests: '4 guests',
     beds: '2 double',
     view: 'Courtyard view',
@@ -535,34 +548,12 @@ const stays: Stay[] = [
     tint: "url('/images/landscape8.jpg') center / cover no-repeat",
   },
   {
-    name: 'Barkada Villa',
-    desc: 'A shareable space for friends with a living area and extra breathing room.',
-    badge: 'Group',
-    guests: '6 guests',
-    beds: '3 double',
-    view: 'Resort view',
-    price: '₱0,000',
-    tab: 'Deluxe',
-    tint: "url('/images/landscape8.jpg') center / cover no-repeat",
-  },
-  {
     name: 'Sunset King',
     desc: 'Soft lighting and a warm palette—made for evening chats and slower nights.',
-    badge: 'Couples',
+    badge: 'Popular',
     guests: '2 guests',
     beds: '1 king',
     view: 'Sunset view',
-    price: '₱0,000',
-    tab: 'Standard',
-    tint: "url('/images/landscape8.jpg') center / cover no-repeat",
-  },
-  {
-    name: 'Private Nook',
-    desc: 'A quiet, tucked-away room with a minimalist feel and deep rest energy.',
-    badge: 'Quiet',
-    guests: '2 guests',
-    beds: '1 queen',
-    view: 'Nature view',
     price: '₱0,000',
     tab: 'Standard',
     tint: "url('/images/landscape8.jpg') center / cover no-repeat",
@@ -623,4 +614,15 @@ function onBookNow() {
   // Placeholder action for now; wire to a booking route/modal when ready.
   scrollTo('book')
 }
+
+function getRoomRoute(tab: StayTab): string {
+  const routeMap: Record<StayTab, string> = {
+    'Super Deluxe': '/super-deluxe',
+    'Deluxe': '/deluxe',
+    'Standard': '/standard',
+    'Pavilions': '/pavilions',
+  }
+  return routeMap[tab] || '/super-deluxe'
+}
+
 </script>
