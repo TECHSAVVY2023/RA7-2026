@@ -227,9 +227,9 @@ import { Motion } from 'motion-v'
 
 const superDeluxeGalleryItems = [
   { title: 'Premium king suite', tag: 'Spacious comfort', desc: 'Luxurious sleeping quarters with premium bedding and sophisticated decor.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
-  { title: 'Garden view balcony', tag: 'Scenic vistas', desc: 'Private outdoor space overlooking lush gardens and resort grounds.', image: 'https://images.unsplash.com/photo-1618161400198-e6301c3b2e29?w=600&h=400&fit=crop' },
+  { title: 'Garden view balcony', tag: 'Scenic vistas', desc: 'Private outdoor space overlooking lush gardens and resort grounds.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
   { title: 'Spa-inspired bathroom', tag: 'Luxury amenities', desc: 'Rainfall shower and premium toiletries for ultimate relaxation.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
-  { title: 'Living room lounge', tag: 'Entertainment hub', desc: 'Comfortable seating area with entertainment system and ambient lighting.', image: 'https://images.unsplash.com/photo-1567538096051-b6643b25c45d?w=600&h=400&fit=crop' },
+  { title: 'Living room lounge', tag: 'Entertainment hub', desc: 'Comfortable seating area with entertainment system and ambient lighting.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
 ]
 
 const sectionInitial = { opacity: 0, y: 20 } as const

@@ -234,9 +234,9 @@ useHead({
 
 const pavilionGalleryItems = [
   { title: 'Master suite opulence', tag: 'Ultra-luxury', desc: 'Expansive bedroom with premium linens and luxurious furnishings throughout.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
-  { title: 'Private resort pool', tag: 'Exclusive amenity', desc: 'Your own private swimming pool with stunning views and complete privacy.', image: 'https://images.unsplash.com/photo-1618161400198-e6301c3b2e29?w=600&h=400&fit=crop' },
+  { title: 'Private resort pool', tag: 'Exclusive amenity', desc: 'Your own private swimming pool with stunning views and complete privacy.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
   { title: 'Spa-inspired luxury bath', tag: 'Premium facilities', desc: 'Sophisticated bathroom with soaking tub, rainfall shower, and premium toiletries.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
-  { title: 'Grand living pavilion', tag: 'Entertainment hub', desc: 'Spacious living area with state-of-the-art entertainment and panoramic views.', image: 'https://images.unsplash.com/photo-1567538096051-b6643b25c45d?w=600&h=400&fit=crop' },
+  { title: 'Grand living pavilion', tag: 'Entertainment hub', desc: 'Spacious living area with state-of-the-art entertainment and panoramic views.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
 ]
 
 const sectionInitial = { opacity: 0, y: 20 } as const

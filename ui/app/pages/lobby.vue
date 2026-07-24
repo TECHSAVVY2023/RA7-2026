@@ -21,7 +21,7 @@
           <div class="mt-10 grid gap-6 grid-cols-1">
 
             <Motion 
-              v-for="item in galleryItems" 
+              v-for="(item, index) in galleryItems" 
               :key="item.title"
               as="article"
               :initial="sectionInitial"
@@ -30,9 +30,24 @@
               :transition="sectionTransition"
               class="group overflow-hidden rounded-[28px] border border-slate-950/10 bg-white/90 shadow-sm transition hover:shadow-md"
             >
-              <div class="relative h-[300px] sm:h-[360px] lg:h-[420px] bg-slate-100 rounded-t-[14px] overflow-hidden border-b border-slate-950/8">
-                <img :src="item.image" :alt="item.title" class="block w-full h-full object-cover object-center transition duration-300 group-hover:scale-105" />
-              </div>
+             <div class="relative h-[300px] sm:h-[360px] lg:h-[420px] bg-slate-100 rounded-t-[14px] overflow-hidden border-b border-slate-950/8">
+  
+  <!-- Blurred background image (Full size / Cover) -->
+  <img
+    :src="item.image"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover object-center blur-md z-0"
+  />
+
+  <!-- Main sharp image -->
+  <img
+    :src="item.image"
+    :alt="item.title"
+    :class="index === 3 ? 'relative z-10 block w-full h-full object-cover object-center transition duration-300 rotate-[-2deg] -translate-y-1 group-hover:scale-105' : 'relative z-10 block w-full h-full object-contain object-center transition duration-300 scale-[0.99] group-hover:scale-105'"
+  />
+  
+</div>
               <div class="p-6">
                 <p class="text-xs font-semibold uppercase tracking-[0.28em] text-amber-600">{{ item.tag }}</p>
                 <h2 class="mt-3 text-lg font-semibold text-slate-950">{{ item.title }}</h2>
@@ -98,28 +113,28 @@ function staggerTransition(index: number, baseDelay = 0): MotionTransition {
 
 const galleryItems = [
   {
-    title: 'Sunlit arrival lounge',
-    tag: 'Welcome lounge',
-    desc: 'Natural light and warm textures create a calm first impression for every guest.',
-    image: '/images/landscape14.jpg',
-  },
-  {
     title: 'Quiet seating nook',
     tag: 'Soft retreat',
     desc: 'A comfortable lounge corner with cozy seating for pre-check-in relaxation.',
-    image: '/images/landscape15.jpg',
+    image: '/images/gallery/welcome0.png',
+  },
+  {
+    title: 'Sunlit arrival lounge',
+    tag: 'Welcome lounge',
+    desc: 'Natural light and warm textures create a calm first impression for every guest.',
+    image: '/images/gallery/welcome1.png',
   },
   {
     title: 'Service desk details',
     tag: 'Smooth arrival',
     desc: 'A welcoming desk experience features thoughtful design and quick check-in service.',
-    image: '/images/landscape16.jpg',
+    image: '/images/gallery/welcome3.png',
   },
   {
-    title: 'Lobby artwork',
-    tag: 'Local character',
-    desc: 'Curated art and natural accents bring the RA7 lobby to life with a gentle island palette.',
-    image: '/images/landscape1.jpg',
+    title: 'The Snack Shack',
+    tag: 'Local Munchies, Snack Station, Comfort Treats, Grab & Go',
+    desc: 'Curated local junk foods and sweet treats bring the canteen counter to life with a gentle island flavor.',
+    image: '/images/gallery/welcome3.jpg',
   },
 ]
 </script>

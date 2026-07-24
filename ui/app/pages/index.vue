@@ -466,9 +466,15 @@ const iconBoxClass =
 const segmentedButtonClass =
   'cursor-pointer rounded-full px-4.5 py-2.5 text-sm font-bold transition-all duration-200 motion-reduce:transition-none whitespace-nowrap'
 
-const landscapes = Array.from({ length: 16 }, (_, i) => `/images/landscape${i + 1}.jpg`)
+const galleryImages = [
+  '/images/gallery/welcome0.png',
+  '/images/gallery/pooldusk0.jpg',
+  '/images/gallery/roomcomfort0.jpg',
+  '/images/gallery/pavilion0.jpg',
+  '/images/gallery/sunsetdeck0.jpg',
+]
 const heroVideoUrl = '/videos/ra7.mp4'
-const heroPosterUrl = landscapes[0]
+const heroPosterUrl = galleryImages[0]
 const heroInitial = { opacity: 0, y: 28, scale: 0.99 }
 const heroAnimate = { opacity: 1, y: 0, scale: 1 }
 const heroTransition: MotionTransition = { duration: 0.82, ease: [0.22, 1, 0.36, 1] }
@@ -505,8 +511,8 @@ const amenities: Amenity[] = [
   { icon: '🍳', name: 'Breakfast option', desc: 'Grab-and-go or slow brunch—choose your pace.' },
   { icon: '📶', name: 'Fast Wi‑Fi', desc: 'Stream, work, or post—solid connection across the resort.' },
   { icon: '🚗', name: 'Easy parking', desc: 'Arrive smoothly with convenient on-site parking.' },
-  { icon: '🧖', name: 'Spa corner', desc: 'Massage-ready space for recovery and calm.' },
-  { icon: '🛶', name: 'Activities', desc: 'Light adventures—water, sand, and nearby nature.' },
+  { icon: '🍖', name: 'Outdoor kitchen corner', desc: 'Grill, cook, and gather under the open sky.' },
+  { icon: '🛶', name: 'Activities', desc: 'Pool party.' },
 ]
 
 const stayTabs: StayTab[] = ['Super Deluxe', 'Deluxe', 'Standard', 'Pavilions']
@@ -596,11 +602,11 @@ const stays: Stay[] = [
 const filteredStays = computed(() => stays.filter((s) => s.tab === selectedStayTab.value))
 
 const gallery = [
-  { slug: 'lobby', title: 'Lobby & welcome', text: 'Clean lines and warm textures.', image: landscapes[14] },
-  { slug: 'poolAtDusk', title: 'Pool at dusk', text: 'Soft light and calm water.', image: landscapes[5] },
-  { slug: 'roomComfort', title: 'Room comfort', text: 'Rest-forward design details.', image: landscapes[4] },
-  { slug: 'diningCorner', title: 'Dining corner', text: 'Fresh plates, easy mornings.', image: landscapes[6] },
-  { slug: 'sunsetDeck', title: 'Sunset deck', text: 'The signature RA7 view.', image: landscapes[11] },
+  { slug: 'lobby', title: 'Lobby & welcome', text: 'Clean lines and warm textures.', image: galleryImages[0] },
+  { slug: 'poolAtDusk', title: 'Pool at dusk', text: 'Soft light and calm water.', image: galleryImages[1] },
+  { slug: 'roomComfort', title: 'Room comfort', text: 'Rest-forward design details.', image: galleryImages[2] },
+  { slug: 'diningCorner', title: 'The Pavilions', text: 'Designed as a tranquil sanctuary.', image: galleryImages[3] },
+  { slug: 'sunsetDeck', title: 'Sunset deck', text: 'The signature RA7 view.', image: galleryImages[4] },
 ]
 
 

@@ -230,9 +230,9 @@ useHead({
 
 const standardGalleryItems = [
   { title: 'Clean bedroom', tag: 'Practical design', desc: 'Cozy sleeping area with quality mattress and clean linens.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
-  { title: 'Work area', tag: 'Functional space', desc: 'Small desk ideal for business travelers or laptop work.', image: 'https://images.unsplash.com/photo-1618161400198-e6301c3b2e29?w=600&h=400&fit=crop' },
+  { title: 'Work area', tag: 'Functional space', desc: 'Small desk ideal for business travelers or laptop work.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
   { title: 'Shower bathroom', tag: 'Essential facilities', desc: 'Practical bathroom with shower and basic amenities.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
-  { title: 'Compact layout', tag: 'Smart space', desc: 'Efficiently designed room maximizing comfort in a smaller footprint.', image: 'https://images.unsplash.com/photo-1567538096051-b6643b25c45d?w=600&h=400&fit=crop' },
+  { title: 'Compact layout', tag: 'Smart space', desc: 'Efficiently designed room maximizing comfort in a smaller footprint.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
 ]
 
 const sectionInitial = { opacity: 0, y: 20 } as const
