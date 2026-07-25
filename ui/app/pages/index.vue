@@ -97,6 +97,12 @@
             </dl>
           </div>
         </div>
+
+        <img
+          src="/ra7-logo.png"
+          alt="TechSavvy logo"
+          class="pointer-events-none absolute bottom-4 right-4 z-20 h-auto w-20 min-[860px]:-bottom-10 min-[860px]:right-3 min-[860px]:w-24"
+        >
       </Motion>
 
       <div id="highlights" class="mt-8 scroll-mt-15">

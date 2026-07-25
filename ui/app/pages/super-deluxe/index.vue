@@ -44,7 +44,12 @@
             class="group overflow-hidden rounded-[22px] border border-slate-950/10 bg-white/86 shadow-[0_20px_55px_rgba(2,6,23,0.1)] transition-shadow duration-300 hover:shadow-[0_24px_64px_rgba(245,158,11,0.16)]"
           >
             <div class="relative h-60 min-[860px]:h-70 overflow-hidden rounded-t-[22px] bg-slate-100">
-              <img :src="item.image" :alt="item.title" class="block w-full h-full object-cover object-center transition duration-500 group-hover:scale-110">
+              <img
+                :src="item.image"
+                :alt="item.title"
+                :style="item.imagePosition ? { objectPosition: item.imagePosition } : undefined"
+                class="block w-full h-full object-cover object-center transition duration-500 group-hover:scale-110"
+              >
               <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,6,23,0.01)_0%,rgba(2,6,23,0.15)_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div class="p-5">
@@ -226,10 +231,10 @@ import { Motion } from 'motion-v'
 
 
 const superDeluxeGalleryItems = [
-  { title: 'Premium king suite', tag: 'Spacious comfort', desc: 'Luxurious sleeping quarters with premium bedding and sophisticated decor.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
-  { title: 'Garden view balcony', tag: 'Scenic vistas', desc: 'Private outdoor space overlooking lush gardens and resort grounds.', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop' },
-  { title: 'Spa-inspired bathroom', tag: 'Luxury amenities', desc: 'Rainfall shower and premium toiletries for ultimate relaxation.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
-  { title: 'Living room lounge', tag: 'Entertainment hub', desc: 'Comfortable seating area with entertainment system and ambient lighting.', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop' },
+  { title: 'Premium king suite', tag: 'Spacious comfort', desc: 'Luxurious sleeping quarters with premium bedding and sophisticated decor.', image: '/images/super_deluxe/superdeluxe0.jpg' },
+  { title: 'Garden view balcony', tag: 'Scenic vistas', desc: 'Private outdoor space overlooking lush gardens and resort grounds.', image: '/images/super_deluxe/superdeluxe1.jpg', imagePosition: 'center 100%' },
+  { title: 'Spa-inspired bathroom', tag: 'Luxury amenities', desc: 'Rainfall shower and premium toiletries for ultimate relaxation.', image: '/images/super_deluxe/bathroom.jpg' },
+  { title: 'Living room lounge', tag: 'Entertainment hub', desc: 'Comfortable seating area with entertainment system and ambient lighting.', image: '/images/super_deluxe/superdeluxe2.jpg' },
 ]
 
 const sectionInitial = { opacity: 0, y: 20 } as const
